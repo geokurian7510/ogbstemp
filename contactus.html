@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+        padding: 20px;
+    }
+    .contact-container {
+        background-color: #ffffffc7;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    #contact-number {
+        font-size: 24px;
+        display: none; /* Hide the contact number initially */
+    }
+    #show-button {
+        background-color: #04801e;
+        color: #000000;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+</style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- mobile metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<!-- site metas -->
+<title>Ink&Paper</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- bootstrap css -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<!-- style css -->
+<link rel="stylesheet" type="text/css" href="CSS/ink&paper.css">
+<!-- Responsive-->
+<link rel="stylesheet" href="css/responsive.css">
+<!-- fevicon -->
+<link rel="icon" href="images/fevicon.png" type="image/gif" />
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+<!-- Tweaks for older IEs-->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+<!-- font awesome -->
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--  -->
+<!-- owl stylesheets -->
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesoeet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
+<body>
+<!-- banner bg main start -->
+<div class="banner_bg_main">
+   <!-- header top section start -->
+  <!-- <div class="container">
+      <div class="header_section_top">
+         <div class="row">
+            <div class="col-sm-12">
+               <div class="custom_menu">
+                  <ul>
+                     <li><a href="#">Best Sellers</a></li>
+                     <li><a href="#">Award Winners</a></li>
+                     <li><a href="#">New Arrivals</a></li>
+                     <li><a href="#">Today's Deals</a></li>
+                     <li><a href="#">Customer Service</a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- header top section start -->
+   <!-- logo section start -->
+   <div class="logo_section">
+      <div class="container">
+         <div class="row">
+            <div class="col-sm-0">
+               <div class="logo"><a href="home.php"><h2 class="banner_taital">OGBS</h2></a></div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!-- logo section end -->
+   <!-- header section start -->
+   <div class="header_section">
+      <div class="container">
+         <div class="containt_main">
+            <div id="mySidenav" class="sidenav">
+               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+               <h2>Hello Readers!</h2>
+               <a href="index.html">Home</a>
+               <a href="#">New Arrivals</a>
+               <a href="#">Best Sellers</a>
+               <a href="#">Featured Authors</a>
+               <a href="#">Today's deals</a>
+            </div>
+            
+            </div>
+            <div class="header_box">
+               <!--<div class="lang_box ">
+                  <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
+                  <img src="images/flag-uk.png" alt="flag" class="mr-2 " title="United Kingdom"> English <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
+                  </a>
+                  <div class="dropdown-menu ">
+                     <a href="#" class="dropdown-item">
+                     <img src="images/India_Flag .jpeg" class="mr-2" alt="flag">
+                     India
+                     </a>
+                  </div>
+               </div>-->
+             
+                  <ul>
+                  
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+    <div class="fashion_section">
+        <main id="main" class="main">
+          <div class="banner_taital">
+                    <nav>
+                     <!-- End Page Title -->
+               <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="userdashboard.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="youraccount.php">Your Account</a></li>
+                        <li class="breadcrumb-item active">Contact Us</li>
+                      </ol>
+                    </nav>
+                  </div>
+            
+            <div class="contact-container">
+              <b> <h2>CONTACT PAGE</h2></b>
+            
+                <p>Click the button below to reveal the contact numbers:</p>
+                <button id="show-button" onclick="showContactNumbers()">Show Contact Numbers</button>
+                <p class="contact-number" style="display: none;">7510770347</p>
+                <p class="contact-number" style="display: none;">9400430354</p>
+                <p class="contact-number" style="display: none;">9961019644</p>
+                
+               <p class="contact-number" style="display: none;">
+                Email:<br></br>
+                geokurian212122@gmail.com</p>
+                <p class="contact-number" style="display: none;">admin@gmail.com</p>
+            </div>
+            
+            <script>
+                function showContactNumbers() {
+                    var contactNumbers = document.querySelectorAll(".contact-number");
+                    var showButton = document.getElementById("show-button");
+            
+                    for (var i = 0; i < contactNumbers.length; i++) {
+                        contactNumbers[i].style.display = "block";
+                    }
+            
+                    showButton.style.display = "none";
+                }
+            </script>
+          
+   <body>
+      <!-- banner bg main start -->
+      
