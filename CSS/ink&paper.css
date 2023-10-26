@@ -288,7 +288,7 @@ button {
 /* header section start */
 
 .header_section {
-    width: 100%;
+    width: 1%;
     display: flex;
     padding-bottom: 30px;
 }
@@ -494,7 +494,7 @@ a:hover {
 /* banner section start */
 
 .banner_section {
-    width: 100%;
+    width: 70%;
     float: left;
     padding-bottom: 60px;
     background-image: url(../images/9396104_3016.jpg); 
@@ -505,7 +505,7 @@ a:hover {
 .banner_taital {
     width: 100%;
     font-size: 60px;
-    color: #060606;
+    color: #ffffff;
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;

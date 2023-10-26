@@ -1,3 +1,12 @@
+<html>
+<head>
+<script type="text/javascript" src="swal/jquery.min.js"></script>
+<script type="text/javascript" src="swal/bootstrap.min.js"></script>
+<script type="text/javascript" src="swal/sweetalert2@11.js"></script>
+</head>
+<body>
+</html>
+
 <?php
 session_start();
 include_once'connection.php';
@@ -6,29 +15,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 
     $custid=$_SESSION["customerid"];
-    echo "inside POST";
+    echo "";
     $ratcard=$_POST['ratcard'];
-  
+    
     $aadharno=$_POST['aadharno'];
     $no_of_cylinder=$_POST['no_of_cylinder'];
-    echo $ratcard;
-    echo $aadharno;
-    echo $no_of_cylinder;
+    $category=$_POST['category'];
+   
     $img = $_FILES['photo']['name'];
     $allow = array("jpg","jpeg","gif","png");
     $todir = 'uploads/';      
       if ( !!$_FILES['photo']['name'] ) // is the file uploaded yet?
       {
-        echo "inside image 1";
+        echo "";
             $info = explode('.', strtolower( $_FILES['photo']['name']) ); // whats the extension of the file
     
             if ( in_array( end($info), $allow) ) // is this file allowed
             {
-                echo "inside image 2";
+                echo "";
                 if ( move_uploaded_file( $_FILES['photo']['tmp_name'], $todir . basename($_FILES['photo']['name'] ) ) )
                 {
-                    echo "inside image 3";
-                    echo " the file has been moved correctly";
+                    echo "";
+                    echo " ";
                     $dst_db="uploads/".$img;
                 }
     
@@ -45,9 +53,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 
 
-    $sql = "insert into connection(ratcard,c_id,aadharno,no_of_cylinder,photo) values('$ratcard','$custid','$aadharno','$no_of_cylinder','$img')";
+    $sql = "insert into connection(ratcard,c_id,aadharno,no_of_cylinder,photo,categoryid) values('$ratcard','$custid','$aadharno','$no_of_cylinder','$img','$category')";
+ 
     $result=mysqli_query($conn,$sql);
+    ?>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Updated Successfully',
+                    didClose: () => {
+                        window.location.replace('../userdashboard.php');
+                    }
+                });
+            </script>
+            <?php
 }
+
 else{
 }
 ?>
@@ -173,11 +194,33 @@ button{
         <label for="aadharno">Aadhar Number</label>
         <input type="number" placeholder="" name="aadharno" id="">
 
-        <label for="no_of_cylinder">number of cylinder</label>
-        <input type="number" placeholder="" name="no_of_cylinder" id="">
-        <br>  
+        <label for="no_of_cylinder">Number of cylinders</label>
+<select name="no_of_cylinder" id="no_of_cylinder">
+    <option value="1">1</option>
+    <option value="2">2</option>
+</select>
+<br>
+
+        
+       <br> <b> cylinder type </b><?php
+  $sql = "SELECT * FROM category";
+$result = mysqli_query($conn,$sql);
+echo "<select name='category'>";
+while ($row = mysqli_fetch_array($result)) {
+    echo "<option value='" . $row['categoryid'] . "'>" . $row['category'] . "</option>";
+}
+echo "</select>";
+?><br>
+        <br>  <br>
         <input type="submit" name="" id = "Add" value="SUBMIT">
        
     </form></div></div></div>
+   
 </body>
 </html>
+
+
+
+
+
+

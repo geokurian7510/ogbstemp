@@ -58,7 +58,7 @@ h6 {
     padding: 0 0 10px 0;
     font-weight: normal;
     line-height: normal;
-    color: #111111;
+    color: #ffffff;
     margin: 0
 }
 
@@ -215,7 +215,7 @@ button {
 .header_section {
     width: 100%;
     float: left;
-    background-color: #3fc579;
+    background-color: #3f0d0d;
     height: auto;
     background-size: 100%;
 }
@@ -1026,3 +1026,56 @@ textarea#comment::placeholder {
     left: 10px; /* Adjust the left position as needed */
     top: 10px; /* Adjust the top position as needed */
 }
+/* Add this CSS to your stylesheet */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+ }
+ 
+ .mail_section_1 {
+    background-color: #fffafa;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+ }
+ 
+ label {
+    font-weight: bold;
+ }
+ 
+ select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #14ce21;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+ }
+ 
+ textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+ }
+ 
+ .btn-warning {
+    background-color: #ff9800;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+ }
+ 
+ .btn-warning:hover {
+    background-color: #ffaa00;
+ }
+/* Add this CSS to your stylesheet */
+.container {
+    max-width: 1800px; /* Increase the max-width to your desired size */
+    margin: 0 auto;
+ }
+  

@@ -1,4 +1,20 @@
+<html>
+<head>
+<script type="text/javascript" src="swal/jquery.min.js"></script>
+<script type="text/javascript" src="swal/bootstrap.min.js"></script>
+<script type="text/javascript" src="swal/sweetalert2@11.js"></script>
+</head>
+<body>
+</html>
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPmailer/src/PHPMailer.php';
+require 'PHPmailer/src/SMTP.php';
+require 'PHPmailer/src/Exception.php';
+
 session_start();
 $f_name=$l_name=$email=$phn_number="";
 include_once 'connection.php';
@@ -93,16 +109,67 @@ if($pwd==$confirmpassword)
     if (mysqli_query($conn, $sql)) {
 		$sql = "INSERT INTO login (email,pwd,typeofuser) VALUES ('$email','$pwd','$user')";
       mysqli_query($conn, $sql);
+	  $fullname = $f_name.' '.$l_name;
+	  $mail = new PHPMailer;
+
+                // SMTP configuration
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'geokurian4@gmail.com';
+                $mail->Password = 'qjzgvzfmecmsonqq';
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
+
+                // Sender and recipient
+                $mail->setFrom('geokurian4@gmail.com', 'Geo Kurian');
+                $mail->addAddress($email, $fullname);
+
+                // Email content
+                $mail->isHTML(true);
+                $mail->Subject = 'Account Creation';
+                $mail->Body = 'Dear Customer, <br><br>
+We are delighted to inform you that your account has been successfully register to  OGBS as a staff. Welcome to our community!<br><br>
+
+Your login details:<br>
+Username: ' . $fullname . '<br>
+Email Address: ' . $email . '<br><br>
+
+you have registered sucessfully.<br><br>	
+
+If you have any questions or require assistance, please do not hesitate to contact our support team at geokurian@gmail.com.<br><br>
+
+Thank you for choosing Ink&Paper. We look forward to having you as a valued member of our community.<br><br>
+
+Best Regards,<br>
+The ogbs Team'; // Your email content
+
+
+                // Send the email
+                if (!$mail->send()) {
+                    echo 'Message could not be sent.';
+                    echo 'Mailer Error: ' . $mail->ErrorInfo;
+                } else {
+                    echo 'Message has been sent.';
+                }
       $_SESSION["email"] = $email;
-      header('Location:indexhome.php');
-       exit();
+      ?>
+	  <script>
+		  Swal.fire({
+			  icon: 'success',
+			  text: 'Registered Successfully',
+			  didClose: () => {
+				  window.location.replace('../index.php');
+			  }
+		  });
+	  </script>
+	  <?php
+
     }  
 }
 }
 } 
 ?>
-
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -119,7 +186,7 @@ if($pwd==$confirmpassword)
 
 	<body>
 
-		<div class="wrapper" style="background-image: url('images/gas7.jpg');">
+		<div class="wrapper" style="background-image: url('images/.jpg');">
 			<div class="inner">
 				<div class="image-holder">
 					<img src="images/gas4.jpg" alt="">

@@ -1,18 +1,24 @@
+<html>
+<head>
+<script type="text/javascript" src="swal/jquery.min.js"></script>
+<script type="text/javascript" src="swal/bootstrap.min.js"></script>
+<script type="text/javascript" src="swal/sweetalert2@11.js"></script>
+</head>
+<body>
+</html>
+
 <?php
 include_once 'connection.php';
 error_reporting(E_ALL);
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
-    echo "inside post";
+    echo "";
     $email=$_POST['email'];
     $password=$_POST['password'];
-    echo $name;
-    echo $password;
     $sql="select * from login where email='".$email."' and pwd='".$password."'";
     $result=mysqli_query($conn,$sql);
     //echo $result;
     $row=mysqli_fetch_array($result);
-    echo $row;
     if($row["typeofuser"]=="customer")
     {
         session_start();
@@ -26,9 +32,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     }
     elseif($row["typeofuser"]=="admin")		
     {
+		session_start();
         $_SESSION['email']=$email;
-        header("location:adminhome.php");
-        
+        header("location:admin2.php");
+		$_SESSION["email"]=$row["email"];
     }
     elseif($row["typeofuser"]=="staff")
     {   session_start();
@@ -38,16 +45,25 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
 		$row=mysqli_fetch_array($result);
 		$_SESSION["staffname"]=$row["f_name"];
 		$_SESSION["staffid"]=$row["s_id"];
-        header("location:STAFFDASHBOARD.php");
+        header("location:staffdashboard1.php");
         
     }
     else
     {
         session_start();
         //echo "invalid usernme or password";
-        $message="Invalid username or password";
-        $_SESSION['loginMessage']=$message;
-        header("location:indexhome.php");
+		?>
+		<script>
+			Swal.fire({
+				icon: 'warning',
+				text: 'wrong login information',
+				didClose: () => {
+					window.location.replace('index.php');
+				}
+			});
+		</script>
+		<?php
+
     }
 }
 else{

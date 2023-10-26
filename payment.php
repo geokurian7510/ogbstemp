@@ -1,63 +1,97 @@
-
 <!DOCTYPE html>
-<!-- Created By CodingNepal -->
-<html lang="en" dir="ltr">
-   <head>
-      <meta charset="utf-8">
-      <title>Transparent Login Form HTML CSS</title>
-      <link rel="stylesheet" href="CSS/payment.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-   </head>
-   <body>  
-      <div class="bg-img">
-         <div class="content">
-            <header>payment Form</header>
-            <form action="paymentinsertion.php" method="post">
-               <div class="field">
-                  <span class="fa fa-user"></span>
-                  <input type="text" name="bank_name" required placeholder="bank name" >
-               </div>
-               <div class="form-group">  
-            <fieldset style="background-color:white;">
-                <label for="bank" > Card Type</label>
-                <div class="">
-                  <input type="radio" class="radio" name="card_type" value="visa" id="visa" />
-                  <label for="visa">Visa</label>
-                  <input type="radio" class="radio" name="card_type" value="mastercard" id="mastercard" />
-                  <label for="mastercard"> MasterCard</label>
-                  <input type="radio" class="radio" name="card_type" value="amex" id="amex" />
-                  <label for="amex"> American Express</label>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="CSS/payment.css">
+
+</head>
+<body>
+
+<div class="container">
+
+    <form action="">
+
+        <div class="row">
+
+            <div class="col">
+
+                <h3 class="title">billing address</h3>
+
+                <div class="inputBox">
+                    <span>full name :</span>
+                    <input type="text" placeholder="john deo">
                 </div>
-              </fieldset>
-            </div>
-            <div class="field space">
-                  <span class="fa fa-lock"></span>
-                  <input type="password" class="pass-key" name="card_no" required placeholder="card number">
-               </div>
-               <div class="field space">
-                  <span class="fa fa-user"></span>
-                  <input type="number" class="pass-key" name="payment" required placeholder="Amount">
-               </div>
-              
-               <div class="field space">
-              <input type="submit" value="submit" name="submit">
-               </div>
-            </form>
-            
-      <script>
-         const pass_field = document.querySelector('.pass-key');
-         const showBtn = document.querySelector('.show');
-         showBtn.addEventListener('click', function(){
-          if(pass_field.type === "password"){
-            pass_field.type = "text";
-            showBtn.textContent = "HIDE";
-            showBtn.style.color = "#3498db";
-          }else{
-            pass_field.type = "password";
-            showBtn.textContent = "SHOW";
-            showBtn.style.color = "#222";
-          }
-         });
-      </script>
-   </body>
+                <div class="inputBox">
+                    <span>email :</span>
+                    <input type="email" placeholder="example@example.com">
+                </div>
+                <div class="inputBox">
+                    <span>address :</span>
+                    <input type="text" placeholder="room - street - locality">
+                </div>
+                <div class="inputBox">
+                    <span>city :</span>
+                    <input type="text" placeholder="mumbai">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>state :</span>
+                        <input type="text" placeholder="india">
+                    </div>
+                    <div class="inputBox">
+                        <span>zip code :</span>
+                        <input type="text" placeholder="123 456">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col">
+
+                <h3 class="title">payment</h3>
+
+                <div class="inputBox">
+                    <span>cards accepted :</span>
+                    <img src="images/card_img.png" alt="">
+                </div>
+                <div class="inputBox">
+                    <span>name on card :</span>
+                    <input type="text" placeholder="mr. john deo">
+                </div>
+                <div class="inputBox">
+                    <span>credit card number :</span>
+                    <input type="number" placeholder="1111-2222-3333-4444">
+                </div>
+                <div class="inputBox">
+                    <span>exp month :</span>
+                    <input type="text" placeholder="january">
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>exp year :</span>
+                        <input type="number" placeholder="2022">
+                    </div>
+                    <div class="inputBox">
+                        <span>CVV :</span>
+                        <input type="text" placeholder="1234">
+                    </div>
+                </div>
+
+            </div>
+    
+        </div>
+
+        <input type="submit" value="proceed to checkout" class="submit-btn">
+
+    </form>
+
+</div>    
+    
+</body>
 </html>

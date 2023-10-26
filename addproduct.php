@@ -3,9 +3,6 @@ include('admindashboard.php');
 ?>
 
 <?php
-// Start the session
-session_start();
-
 include('connection.php');error_reporting(E_ALL);
 if(isset($_POST['submit']))
 {

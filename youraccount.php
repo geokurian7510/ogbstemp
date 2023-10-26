@@ -13,7 +13,7 @@ include("connection.php");
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Ink&Paper</title>
+      <title>ogbs</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -44,7 +44,7 @@ include("connection.php");
       <!-- banner bg main start -->
       <div class="banner_bg_main">
          <!-- header top section start -->
-        <!-- <div class="container">
+         <!--<div class="container">
             <div class="header_section_top">
                <div class="row">
                   <div class="col-sm-12">
@@ -86,6 +86,9 @@ include("connection.php");
                      <a href="#">Featured Authors</a>
                      <a href="#">Today's deals</a>
                   </div>
+                 
+                  
+                  </div>
                   
                   </div>
                   <div class="header_box">
@@ -100,14 +103,13 @@ include("connection.php");
                            </a>
                         </div>
                      </div>-->
-                   
+                     <div class="login_menu">
                         <ul>
-                           <li><a href="#">
                            
                            </li><?php if(isset($_SESSION["name"])){?>
                               <li><i class="fa fa-user " aria-hidden="true"></i>
                               <div class="dropdown">
-                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION["name"];?>
+                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION["name"];?>
                      </button>
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         
@@ -119,7 +121,6 @@ include("connection.php");
                   </div>
                              </li>
                            <?php }else{ ?>
-                              <li><a href="login_signup.php">
                              
                            <?php }?>
                         </ul>
@@ -128,6 +129,7 @@ include("connection.php");
                </div>
             </div>
          </div>
+         <!-- header section end -->
        
       <!-- book section start -->
       <div class="fashion_section">

@@ -1,3 +1,11 @@
+<html>
+<head>
+<script type="text/javascript" src="swal/jquery.min.js"></script>
+<script type="text/javascript" src="swal/bootstrap.min.js"></script>
+<script type="text/javascript" src="swal/sweetalert2@11.js"></script>
+</head>
+<body>
+</html>
 <?php
 // Include the database connection file
 include("connection.php");
@@ -44,7 +52,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                $result=mysqli_query($conn,$sql);
                $sql="update login set pwd = '".$newPassword."' where email='".$email."'";
                $result=mysqli_query($conn,$sql);
-               echo "Password changed successfully!";
+               ?>
+               <script>
+                   Swal.fire({
+                       icon: 'success',
+                       text: 'password changed sucessfully',
+                       didClose: () => {
+                           window.location.replace('../changepassword.php');
+                       }
+                   });
+               </script>
+               <?php
             }
          
 

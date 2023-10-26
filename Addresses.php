@@ -15,7 +15,7 @@ session_start();
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="viewport" content="initial-scale=1, maximum-scale=1">
       <!-- site metas -->
-      <title>Ink&Paper</title>
+      <title>OGBS</title>
       <meta name="keywords" content="">
       <meta name="description" content="">
       <meta name="author" content="">
@@ -185,8 +185,13 @@ if (isset($_SESSION["customerid"])) {
             }
             echo "</ul>";
         } else {
-            echo "No addresses found for this customer.";
-        }
+            echo "No addresses found for this customer.";?>
+            </div>
+            </div>
+            <h5 class="card-title text-center">
+                <strong>Add Address</strong>
+            </h5>
+       <?php }
     } else {
         echo "Error: " . mysqli_error($conn);
     }
@@ -194,11 +199,7 @@ if (isset($_SESSION["customerid"])) {
     echo "You must be logged in to view addresses.";
 }
 ?>
-                    </div>
-                </div>
-                <h5 class="card-title text-center">
-                    <strong>Add Address</strong>
-                </h5>
+             </div></div>
             </div>
         </div>
     </a>

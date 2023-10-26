@@ -31,6 +31,8 @@ include("connection.php");
       <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
    </head>
    <body>
       <div class="call_text_main">
@@ -59,29 +61,31 @@ include("connection.php");
       <div class="header_section">
          <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-               <a class="navbar-brand"href="indexhome.php"><B>OGBS</B></a>
+            <a class="navbar-brand"href="indexhome.php"> <li class="nav-item">
+<h1><b>OGBS</b></h1>
+               </li></a>
                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
                </button>
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                      <li class="nav-item">
-                        <a class="nav-link" href="indexhome.php">Home</a>
+                        <a class="nav-link" href="userdashboard.php"><b>Home</b></a>
                      </li>
                      
                      <li class="nav-item">
-                        <a class="nav-link" href="newgasconn.php">New Connection</a>
+                        <a class="nav-link" href="newgasconn.php"><b>New Connection</b></a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#section-one">Feedback</a>
+                        <a class="nav-link" href="#section-one"><b>Feedback</b></a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#section-two">Our Products</a>
+                        <a class="nav-link" href="#section-two"><b>Our Products</b></a>
                      </li>
                      <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
                             role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Booking
+                            <b>Booking</b>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                            
@@ -92,20 +96,21 @@ include("connection.php");
                             <a class="dropdown-item" href="elements.html">elements</a>
                         </div>
                     </li>
-                    <li class="nav-item dropdown" >
-                        <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3"
-                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <button class="btn btn-primary"> <?php echo $_SESSION["customername"];?></button>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
-                           
-                            <a class="dropdown-item" href="youraccount.php">Your Account</a>
-                            <a class="dropdown-item" href="checkout.html">Your Orders</a>
-                            <a class="dropdown-item" href="indexhome.php">Sign Out</a>
-                            <a class="dropdown-item" href="confirmation.html"></a>
-                            <a class="dropdown-item" href="elements.html"></a>
-                        </div>
-                    </li>
+                    <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown_3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-danger">
+            <i class="fas fa-user-circle"></i> <?php echo $_SESSION["customername"]; ?>
+        </button>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
+        <a class="dropdown-item" href="youraccount.php">Your Account</a>
+        <a class="dropdown-item" href="youraccount.php">Your orders</a>
+        <a class="dropdown-item" href="logout.php">Log Out</a>
+        <a class="dropdown-item" href="confirmation.html"></a>
+        <a class="dropdown-item" href="elements.html"></a>
+    </div>
+</li>
+
                           </ul> 
                         
                         
@@ -223,26 +228,26 @@ include("connection.php");
             <div class="services_section_2">
                <div class="row">
                   <div class="col-md-4">
-                     <div class="color_bt"><a href="#">Faux Finishes</a></div>
+                     <div class="color_bt"><a href="#">Gas Booking</a></div>
                   </div>
                   <div class="col-md-4">
-                     <div class="color_bt active"><a href="#">Water Proofing</a></div>
+                     <div class="color_bt active"><a href="#">Reliable Service</a></div>
                   </div>
                   <div class="col-md-4">
-                     <div class="color_bt"><a href="#">Pre-Paint Demo</a></div>
+                     <div class="color_bt"><a href="#">Secure Transactions</a></div>
                   </div>
                </div>
             </div>
             <div class="services_section_2">
                <div class="row">
                   <div class="col-md-4">
-                     <div class="color_bt active"><a href="#">Mildew Removal</a></div>
+                     <div class="color_bt active"><a href="#">Customer Support</a></div>
                   </div>
                   <div class="col-md-4">
-                     <div class="color_bt"><a href="#">Color Proof</a></div>
+                     <div class="color_bt"><a href="#">Order Tracking</a></div>
                   </div>
                   <div class="col-md-4">
-                     <div class="color_bt active"><a href="#">Window Washing</a></div>
+                     <div class="color_bt active"><a href="#">Product Buying</a></div>
                   </div>
                </div>
             </div>
@@ -268,14 +273,17 @@ include("connection.php");
    ?>
       <div class="col-sm-4 mb-4">
          <div class="card h-100 interactive-card">
-            <img src="./uploads/<?php echo $row['pro_img']; ?>" class="card-img-top" alt="<?php echo $row['pro_name']; ?>">
-            <div class="card-body" style="height: 200px;">
+            <div class="d-flex justify-content-center align-items-center" style="height: 200px;">
+               <img src="./uploads/<?php echo $row['pro_img']; ?>" class="card-img-top" alt="<?php echo $row['pro_name']; ?>" style="width: 200px; height: 200px;">
+            </div>
+            <div class="card-body text-center">
                <h5 class="card-title"><b><?php echo $row['pro_name']; ?></b></h5>
                <p class="card-text"><b>Description:</b> <?php echo $row['pro_description']; ?></p>
                <p class="card-text"><b>Price:</b> $<?php echo $row['pro_price']; ?></p>
             </div>
             <div class="card-footer">
-               <a href="#" class="btn btn-danger">Buy Now</a>
+               <a href="#" class="btn btn-danger">Buy Now</a>&nbsp;
+               <a href="cart.php?id=<?php echo $row['pro_id'];?>" class="btn btn-primary">Add to cart</a>
             </div>
          </div>
       </div>
@@ -284,9 +292,9 @@ include("connection.php");
    ?>
    </div>
 </div>
-</main>
+</main
 
-   </div>
+</div>
 </div>
 </main>
 
@@ -314,31 +322,40 @@ include("connection.php");
                   <section id="section-one"></section>
                   <h1 class="contact_taital">FEEDBACK</h1>
                   <br><br><br>
-                  <p>A feedback form is a way to collect opinions about your company's service. 
-                     The goal is to gain a better understanding of the overall customer experience so you can identify areas for improvement.</p><br><br>
+                 <br><br>
                   <form action="feedback.php" method="POST">
+                     
                </div>
             </div>
          </div>
          <div class="container">
-            <div class="contact_section_2">
-               <div class="row">
-                  <div class="col-md-12">
-                     <div class="mail_section_1">
-                    
+   <div class="contact_section_2">
+      <div class="row">
+         <div class="col-md-12">
+            <div class="mail_section_1">
+               <form>
+                  <label for="rating"><b>Rating:</b></label>
+                  <select id="rating" name="rating" required>
+                     <option value="" disabled selected>Select a rating</option>
+                     <option value="Excellent">Excellent</option>
+                     <option value="Good">Good</option>
+                     <option value="Average">Average</option>
+                     <option value="Below Average">Below Average</option>
+                     <option value="Poor">Poor</option>
+                  </select>
+                  <br><br>
+                  <textarea class="massage-bt" placeholder="Comments" rows="9" id="comment" name="comment"></textarea>
+                  <br><br>
+                  <div class="send_bt">
+                     <button type="submit" class="btn btn-warning">Submit Feedback</button>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
 
-<label for="rating"><b>Rating:</b></label>
-<select id="rating" name="rating" required>
-    <option value="" disabled selected>Select a rating</option>
-    <option value="Excellent">Excellent</option>
-    <option value="Good">Good</option>
-    <option value="Average">Average</option>
-    <option value="Below Average">Below Average</option>
-    <option value="Poor">Poor</option>
-</select>
-                        <textarea class="massage-bt" placeholder="Comments" rows="9" id="comment" name="comment"></textarea>
-                     <br><br><br>   <div class="send_bt">    <button type="submit" class="btn btn-warning" > Submit Feedback</button></div></form>
-                     </div>
                   </div>
                </div>
             </div>
@@ -406,5 +423,13 @@ include("connection.php");
       <!-- sidebar -->
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
+      <script>
+        // Check if the PHP code has set an alert message
+        <?php
+        if (!empty($alertMessage)) {
+            echo "alert('$alertMessage');";
+        }
+        ?>
+    </script>
    </body>
 </html>

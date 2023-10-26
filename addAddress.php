@@ -1,3 +1,11 @@
+<html>
+<head>
+<script type="text/javascript" src="swal/jquery.min.js"></script>
+<script type="text/javascript" src="swal/bootstrap.min.js"></script>
+<script type="text/javascript" src="swal/sweetalert2@11.js"></script>
+</head>
+<body>
+</html>
 <?php
 include_once 'connection.php'; // Make sure this file contains the database connection code and initializes $conn.
 session_start();
@@ -17,7 +25,17 @@ if ($_SERVER["REQUEST_METHOD"] =="POST") {
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        echo "";
+      ?>
+      <script>
+         Swal.fire({
+            icon: 'success',
+            text: 'Address Updated Successfully',
+            didClose: () => {
+               window.location.replace('Addresses.php');
+            }
+         });
+      </script>
+      <?php
     } else {
         echo "Error: " . mysqli_error($conn);
     }
