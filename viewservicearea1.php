@@ -2,9 +2,8 @@
 
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
-    echo "inside isset";
+    
     $id=$_POST['ids'];
-    echo $id;
     $sql="DELETE FROM servicearea WHERE serviceid='".$id."'";
     $result=mysqli_query($conn,$sql);
 }
@@ -18,6 +17,10 @@ else{
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <title>Dashboard - NiceAdmin Bootstrap Template</title>
   <meta content="" name="description">
@@ -412,7 +415,28 @@ else{
 
   </aside><!-- End Sidebar-->
   <main id="main" class="main">
+  <a href="addservicearea1.php" class="btn btn-success" style="float: right;">ADD</a>
 
+
+  <div class="modal fade" id="customModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content custom-modal">
+      <div class="modal-header">
+        <!-- Close button -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete?
+      </div>
+      <div class="modal-footer">
+      <button type="button" onclick="closeModal()" class="btn btn-secondary">Close</button>
+        <button type="button" class="btn btn-danger" onclick="proceedWithDelete()">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
 
               <!-- Table with stripped rows -->
               <table class="table table-light table-striped" style="opacity: 1;">
@@ -422,6 +446,7 @@ else{
                     <th>Id</th>
                     <th>pincode</th>
                     <th>Location</th>
+                    <th>Actions</th>
                    
                 </tr>
             </thead>
@@ -439,9 +464,10 @@ else{
                                     <td>
 
                                     
-                                    <form method="POST" action="viewservicearea1.php">
+                                    <form id="deleteForm" action="viewservicearea1.php" method="post">
                                     <input type="hidden" name="ids" value="<?php echo $row['serviceid'];?>">
-                                    <input type="submit" name="s_id" value="REMOVE" class="btn btn-warning">
+                                    <input type="submit" name="s_id" value="REMOVE" class="btn btn-warning" onclick="confirmDelete(event)">
+</form>
                 </form>
                                     </td>
                                     
@@ -489,6 +515,37 @@ else{
   <script src="vendor/simple-datatables/simple-datatables.js"></script>
   <script src="vendor/tinymce/tinymce.min.js"></script>
   <script src="vendor/php-email-form/validate.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>document.getElementById('cancelButton').addEventListener('click', function () {
+    // Assuming your modal has an id of "myModal"
+    $('#myModal').modal('hide');
+});
+</script>
+<script>
+function confirmDelete(event) {
+  // Prevent the default form submission
+  event.preventDefault();
+
+  // Show the custom Bootstrap modal
+  $('#customModal').modal('show');
+}
+
+function proceedWithDelete() {
+  // If the user clicks "OK" in the modal, proceed with the form submission or other actions
+  document.getElementById("deleteForm").submit();
+  
+  function closeModal() {
+      // Hide the modal and overlay
+      document.getElementById('stockModal').style.display = 'none';
+      document.getElementById('overlay').style.display = 'none';
+    }
+    closeModal();
+
+}
+</script>
 
   <!-- Template Main JS File -->
   <script src="JS/admin2.js"></script>

@@ -32,9 +32,42 @@ include("connection.php");
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <style>
+        .box {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            width: 600px; /* Adjust the width as needed */
+            height: 200px;
+        }
 
+        .kyc-box {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        .connection-box {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+
+        .symbol {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: #fff;
+            color: #3498db; /* You can adjust the color as needed */
+            font-size: 24px;
+        }</style>
    </head>
    <body>
+      <br>
       <div class="call_text_main">
          <div class="container">
             <div class="row">
@@ -124,6 +157,7 @@ include("connection.php");
          </div>
       </div>
       <!-- header section end -->
+     
       <!-- banner section start --> 
       <div class="banner_section layout_padding">
          <div class="container">
@@ -171,12 +205,13 @@ include("connection.php");
                   </div>
                </div>
                <div class="col-md-6">
-                  <div class="banner_img"><img src="images/userdash.jpg"></div>
+                  <div class="banner_img"><img src="images/LOGIN.jpeg"></div>
                </div>
             </div>
          </div>
       </div>
       <!-- banner section end -->
+     
       <!-- about section start -->
       <div class="about_section layout_padding">
          <div class="container-fluid">
@@ -279,10 +314,11 @@ include("connection.php");
             <div class="card-body text-center">
                <h5 class="card-title"><b><?php echo $row['pro_name']; ?></b></h5>
                <p class="card-text"><b>Description:</b> <?php echo $row['pro_description']; ?></p>
-               <p class="card-text"><b>Price:</b> $<?php echo $row['pro_price']; ?></p>
+               <p class="card-text"><b>Price:</b> ₹<?php echo $row['pro_price']; ?></p>
             </div>
             <div class="card-footer">
-               <a href="#" class="btn btn-danger">Buy Now</a>&nbsp;
+            <a href="cart.php?id=<?php echo $row['pro_id'];?>" class="btn btn-danger">BUY NOW</a>
+&nbsp;
                <a href="cart.php?id=<?php echo $row['pro_id'];?>" class="btn btn-primary">Add to cart</a>
             </div>
          </div>
@@ -292,7 +328,7 @@ include("connection.php");
    ?>
    </div>
 </div>
-</main
+   </main>
 
 </div>
 </div>

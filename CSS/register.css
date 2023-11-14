@@ -196,3 +196,15 @@ button {
     margin-top: 60px; } }
 
 /*# sourceMappingURL=style.css.map */
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}

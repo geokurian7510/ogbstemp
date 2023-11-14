@@ -1,3 +1,11 @@
+<html>
+<head>
+<script type="text/javascript" src="swal/jquery.min.js"></script>
+<script type="text/javascript" src="swal/bootstrap.min.js"></script>
+<script type="text/javascript" src="swal/sweetalert2@11.js"></script>
+</head>
+<body>
+</html>
 <?php
 include_once'connection.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
@@ -9,6 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     echo $location;
     $sql = "insert into servicearea(pincode,location) values('$pincode','$location')";
     $result=mysqli_query($conn,$sql);
+    ?>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            text: 'Service Area Added sucessfully',
+            didClose: () => {
+                window.location.replace('viewservicearea1.php');
+            }
+        });
+    </script>
+    <?php
 }
 else{
     echo "post failed";

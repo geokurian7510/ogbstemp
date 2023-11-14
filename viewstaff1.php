@@ -1,4 +1,44 @@
 
+<?php include('connection.php'); 
+
+include_once 'connection.php';
+if(isset($_GET['id'])){
+
+$id=$_GET['id'];
+
+    $sql="update staff set status=1 where s_id='".$id."' ";
+    $result=mysqli_query($conn,$sql);
+}
+else{
+    echo "";
+}
+?>
+<?php include('connection.php');
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+    echo "";
+    $id=$_POST['ids'];
+    echo $id;
+    $sql="DELETE FROM staff WHERE s_id='".$id."'";
+    $result=mysqli_query($conn,$sql);
+}
+else{
+}?>
+
+<?php include('connection.php');
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["s_id"])) {
+    // Get the staff ID from the form
+    $s_id = $_POST["s_id"];
+    
+    // Update the staff status to 2 (Go Leave)
+    $sql = "UPDATE staff SET status = 2 WHERE status = 1 AND s_id = $s_id";
+    mysqli_query($conn, $sql);
+    
+    // Redirect back to the staff list page
+    header("Location: viewstaff1.php"); // Replace with the actual page name
+}
+?>
+
 <?php include('connection.php');
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
@@ -410,7 +450,7 @@ else{
 
   </aside><!-- End Sidebar-->
   <main id="main" class="main">
-
+<h1><b>Staff</b></h1>
               <!-- Table with stripped rows -->
               <table class="table table-light table-striped" style="opacity: 1;">
     <thead>
@@ -420,13 +460,13 @@ else{
             <th>L_name</th>
             <th>Phone Number</th>
             <th>Email</th>
-            <th>Approved Status</th>
+            <th>  Status</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         <?php
-        $sql = "SELECT * FROM staff ";
+        $sql = "SELECT * FROM staff";
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_array($result)) {
             ?>
@@ -437,25 +477,37 @@ else{
                 <td><?php echo $row['phn_number']; ?></td>
                 <td><?php echo $row['email']; ?></td>
                 <td>
-                    <?php
-                    if ($row['status'] == 1) {
-                        echo '<span class="badge badge-success" style="background-color: green; color: white;">Approved</span>';
-                    } else {
-                        echo '<span class="badge badge-warning" style="background-color: yellow; color: black;">Pending</span>';
-                    }
-                    ?>
+                   <?php
+                   if ($row['status'] == 1) {
+                       echo '<span class="badge badge-success" style="background-color: green; color: white;">Approved</span>';
+                   } elseif ($row['status'] == 2) {
+                       echo '<span class="badge badge-info" style="background-color: blue; color: white;">On Leave</span>';
+                   } else {
+                       echo '<span class="badge badge-warning" style="background-color: yellow; color: black;">Pending</span>';
+                   }
+                   ?>
                 </td>
                 <td>
                     <form method="POST" action="viewstaff1.php">
-                        <input type="hidden" name="ids" value="<?php echo $row['s_id']; ?>">
-                        <input type="submit" name="s_id" value="Remove" class="btn btn-danger">
-
+                        <input type="hidden" name="s_id" value="<?php echo $row['s_id']; ?>">
+                        <button type="submit" class="btn btn-primary">OffDuty</button>
                     </form>
+                    <form method="POST" action="assignback.php">
+                        <input type="hidden" name="s_id" value="<?php echo $row['s_id']; ?>">
+                        <button type="submit" class="btn btn-warning">Assign Back</button>
+                    </form>
+                    <form method="POST" action="viewstaff1.php">
+                        <input type="hidden" name="ids" value="<?php echo $row['s_id']; ?>">
+                        <button type="submit" class="btn btn-danger">Remove</button>
+                    </form>
+                    <a href="viewstaff1.php?id=<?php echo $row['s_id'];?>" class="btn btn-success" <?php if ($row['status'] == 0) echo 'style="display:inline;"'; else echo 'style="display:none;"'; ?>>Approve </a>
+
                 </td>
             </tr>
         <?php } ?>
     </tbody>
 </table>
+
 
               
               <!-- End Table with stripped rows -->

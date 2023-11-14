@@ -190,24 +190,7 @@ include("connection.php");
 <!-- End Icons Nav -->
     
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person"></i><span>Customer Management</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="approvegasconn1.php">
-              <i class="bi bi-circle"></i><span>Approve Gas Connection</span>
-            </a>
-          </li>
-          <li>
-          <li>
-            <a href="viewfeedback1.php">
-              <i class="bi bi-circle"></i><span>View Feedback</span>
-            </a>
-          </li>
-        </ul>
-      </li>
+    
       
      
       

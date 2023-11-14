@@ -20,7 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     
     $aadharno=$_POST['aadharno'];
     $no_of_cylinder=$_POST['no_of_cylinder'];
-    $category=$_POST['category'];
    
     $img = $_FILES['photo']['name'];
     $allow = array("jpg","jpeg","gif","png");
@@ -39,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                     echo " ";
                     $dst_db="uploads/".$img;
                 }
-    
             }
             else
             {
@@ -47,15 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 $flag=0;
             }
         }
-      
-    
-    
-
-
-
-    $sql = "insert into connection(ratcard,c_id,aadharno,no_of_cylinder,photo,categoryid) values('$ratcard','$custid','$aadharno','$no_of_cylinder','$img','$category')";
- 
+    $sql = "insert into connection(ratcard,c_id,aadharno,no_of_cylinder,photo) values('$ratcard','$custid','$aadharno','$no_of_cylinder','$img')";
     $result=mysqli_query($conn,$sql);
+    $connid=mysqli_insert_id($conn);
+    $_SESSION['connid']=$connid;
+    header("location:connproductminu.php");
     ?>
             <script>
                 Swal.fire({
@@ -202,19 +196,19 @@ button{
 <br>
 
         
-       <br> <b> cylinder type </b><?php
-  $sql = "SELECT * FROM category";
-$result = mysqli_query($conn,$sql);
-echo "<select name='category'>";
-while ($row = mysqli_fetch_array($result)) {
-    echo "<option value='" . $row['categoryid'] . "'>" . $row['category'] . "</option>";
-}
-echo "</select>";
-?><br>
-        <br>  <br>
+      <br>
         <input type="submit" name="" id = "Add" value="SUBMIT">
        
     </form></div></div></div>
+
+
+
+
+
+
+
+
+    
    
 </body>
 </html>

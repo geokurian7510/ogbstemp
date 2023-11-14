@@ -64,45 +64,18 @@ include("connection.php");
          <!-- header top section start -->
          <!-- logo section start -->
          <div class="logo_section">
-            <div class="container">
+           
                <div class="row">
                   <div class="col-sm-0">
-                     <div class="logo"><a href="home.php"><h2 class="banner_taital">OGBS</h2></a></div>
+                  <a href=""><p style="text-align: left; color: white; font-weight: bold;">&nbsp;&nbsp;&nbsp;&nbsp;OGBS</p></a>
                   </div>
-               </div>
-            </div>
-         </div>
-         <!-- logo section end -->
-         <!-- header section start -->
-         <div class="header_section">
-            <div class="container">
-               <div class="containt_main">
-                  <div id="mySidenav" class="sidenav">
-                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                     <h2>Hello Readers!</h2>
-                     <a href="index.html">Home</a>
-                     <a href="#">New Arrivals</a>
-                     <a href="#">Best Sellers</a>
-                     <a href="#">Featured Authors</a>
-                     <a href="#">Today's deals</a>
-                  </div>
+               
+         
                  
                   
-                  </div>
-                  
-                  </div>
-                  <div class="header_box">
-                     <!--<div class="lang_box ">
-                        <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
-                        <img src="images/flag-uk.png" alt="flag" class="mr-2 " title="United Kingdom"> English <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
-                        </a>
-                        <div class="dropdown-menu ">
-                           <a href="#" class="dropdown-item">
-                           <img src="images/India_Flag .jpeg" class="mr-2" alt="flag">
-                           India
-                           </a>
-                        </div>
-                     </div>-->
+                
+        
+              
                      <div class="login_menu">
                         <ul>
                            
@@ -114,7 +87,7 @@ include("connection.php");
                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         
                      <a class="dropdown-item" href="UserDashboard.php">Your Account</a>
-                     <a class="dropdown-item" href="#">Your Order</a>
+                     <a class="dropdown-item" href="">Your OrderS</a>
                         <a class="dropdown-item" href="signout.php">Sign Out</a>
                         
                      </div>
@@ -147,8 +120,8 @@ include("connection.php");
     <section class="section dashboard">
       <div class="row">
         <!-- Order Card -->
-<div class="col-xxl-4 col-md-4">
-  <a href="#">
+<div class="col-xxl-6 col-md-4">
+  <a href="youroders.php">
     <div class="card info-card sales-card mb-3">
       <div class="card-body">
         <div class="d-flex align-items-left">
@@ -158,7 +131,7 @@ include("connection.php");
             </i>
           </div>
           <div class="ps-1">
-            <h5 class="card-title text-left">Your Order</h5>
+            <h5 class="card-title text-left">Your Orders</h5>
             <span class="text-muted medium text-left pt-1 ps-1">Track and Cancel Orders</span>
           </div>
         </div>
@@ -198,8 +171,12 @@ include("connection.php");
             <img src="images/adress.jpg" alt="Addresses" style="max-width: 100%; max-height: 100%;">
           </div>
           <div class="ps-1">
-            <h5 class="card-title text-left">Your Addresses</h5>
-            <span class="text-muted medium text-left pt-1 ps-1">Add and Edit Addresses</span>
+            <h5 class="card-title text-left">Your kyc</h5>
+            <span class="text-muted medium text-left pt-1 ps-1">Update Kyc:</span>
+            <span class="badge badge-success" style="background-color: green; color: white;">Completed</span>
+                 
+                 <span class="badge badge-warning" style="background-color: red; color: black;">Pending</span>
+             
           </div>
         </div>
       </div>
@@ -224,7 +201,30 @@ include("connection.php");
       </div>
     </div>
   </a>
+</div>
+<div class="col-xxl-4 col-md-4">
+  <a href="">
+    <div class="card info-card custom-card mb-3">
+      <div class="card-body">
+        <div class="d-flex align-items-left">
+          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+            <img src="images/connst1.png" alt="Contact Us" style="max-width: 100%; max-height: 120%;">
+          </div>
+          <div class="ps-1">
+            <h5 class="card-title text-left">Connnection </h5>
+            <span class="text-muted medium text-left pt-1 ps-1"> 
+                       <span class="badge badge-success" style="background-color: green; color: white;">Approved</span>
+                 
+                       <span class="badge badge-warning" style="background-color: red; color: black;">Pending</span>
+                   
+                   </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
 </div><!-- End Contact Card -->
+
 
       </div>
     </section>

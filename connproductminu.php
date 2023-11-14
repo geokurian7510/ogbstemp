@@ -68,16 +68,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         body {
     font-family: 'Arial', sans-serif;
-    background-image: url('images/lpg5.jpeg'); /* Update the path to your background image */
+    background-image: url('images/stock.jpg'); /* Update the path to your background image */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed; /* Keeps the background fixed while scrolling */
 }
 
-.container {
-    /* Add other styles for the container if needed */
-}
 
     </style>
 </head>

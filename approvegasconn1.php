@@ -414,46 +414,53 @@ else{
 
 
               <!-- Table with stripped rows -->
-              <table class="table table-light table-striped" style="opacity: 0.8;">
-            <thead>
-           
-                <tr>
-                    <th>connection_id</th>
-                    <th>custid</th>
-                    <th>Rationcardno</th>
-                    <th>aadharno</th>
-                    <th>no_of_cylinder</th>
-                    <th>photo</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $sql = "SELECT * FROM connection where status=0";
-                $result = mysqli_query($conn,$sql);
-                while ($row = mysqli_fetch_array($result)) {
-                ?>
-                           
-                                        
-                                    <tr><td><?php echo $row['connection_id']?></td>
-                                    <td><?php echo $row['c_id']?></td>
-                                    <td><?php echo $row['ratcard']?></td>
-                                    <td><?php echo $row['aadharno']?></td>
-                                    <td><?php echo $row['no_of_cylinder']?></td>
-                                    <td><img src="./uploads/<?php echo $row['photo']; ?>" class="card-img-top img-fluid card-img"style="width:50px;height:50px;"></td>
-                                    <td>
-                                    <a href="approvegasconn1.php?id=<?php echo $row['connection_id'];?>" class="btn btn-success">Approve </a>
+              <table class="table table-light table-striped" style="opacity: 1;">
+    <thead>
+        <tr>
+            <th>connection_id</th>
+            <th>custid</th>
+            <th>Customer Name</th>
+            <th>Rationcardno</th>
+            <th>Aadharno</th>
+            <th>No_of_cylinder</th>
+            <th>Photo</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $sql = "SELECT connection.*, CONCAT(customer.f_name, ' ', customer.l_name) AS customer_name
+                FROM connection
+                JOIN customer ON connection.c_id = customer.c_id";
+        $result = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($result)) {
+        ?>
+            <tr>
+                <td><?php echo $row['connection_id'] ?></td>
+                <td><?php echo $row['c_id'] ?></td>
+                <td><?php echo $row['customer_name'] ?></td>
+                <td><?php echo $row['ratcard'] ?></td>
+                <td><?php echo $row['aadharno'] ?></td>
+                <td><?php echo $row['no_of_cylinder'] ?></td>
+                <td><img src="./uploads/<?php echo $row['photo']; ?>" class="card-img-top img-fluid card-img" style="width:50px;height:50px;"></td>
+                <td>
+                    <?php
+                    if ($row['status'] == 1) {
+                        echo '<span class="badge badge-success" style="background-color: green; color: white;">Approved</span>';
+                    } else {
+                        echo '<span class="badge badge-warning" style="background-color: yellow; color: black;">Pending</span>';
+                    }
+                    ?>
+                </td>
+                <td>
+                    <a href="approvegasconn1.php?id=<?php echo $row['connection_id']; ?>" class="btn btn-success">Approve</a>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
 
-                </form>
-                                   </td>
-                                    
-                
-                                    
-                </tr>
-                                    
-                <?php } ?>
-            </tbody>
-        </table>
               
               <!-- End Table with stripped rows -->
 

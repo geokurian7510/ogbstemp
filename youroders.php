@@ -31,7 +31,7 @@ include("connection.php");
   <link href="vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="CSS/admin2.css" rel="stylesheet">
+  <link href="CSS/youroders.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -64,34 +64,7 @@ include("connection.php");
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
-
-        <li class="nav-item dropdown">
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">1</span>
-          </a><!-- End Notification Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li class="dropdown-header">
-            <p>stock:</p>
-
-            <?php
-            $sql="SELECT * from cylinder";{
-                   if (['quantity'] == 0) {
-                     stock:  echo  '<span class="badge badge-success" style="background-color: green; color: white;"> Stock Available</span>';
-                   } 
-                    else {
-                       echo '<span class="badge badge-warning" style="background-color: red; color: black;">OutOfStock</span>';
-                   }
-                  }?>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-           
-
+         
             <li>
               <hr class="dropdown-divider">
             </li>
@@ -106,47 +79,15 @@ include("connection.php");
 
       
  <ul class="navbar-nav ml-auto">
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <img src="images/icon.png" alt="Profile" class="rounded-circle">    <span class="d-none d-md-block dropdown-toggle ps-2">ADMIN</span>
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" >
+          <img src="images/icon.png" alt="Profile" class="rounded-circle">   <?php echo $_SESSION["customername"];?></span>
           </a><!-- End Profile Iamge Icon -->
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6><?php echo $_SESSION["email"];?></h6>
-              <span></span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
+         
 
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="ADMINPROFILE.php">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-             
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="logout.php">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
+            
+        
+           
 
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
@@ -162,107 +103,26 @@ include("connection.php");
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="admin2.php">
+        <a class="nav-link " href="">
           <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
+          <span>YOUR ORDERS</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-people"></i><span>Staff Management</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-people"></i><span>CYLINDER BOOKINGS</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-          
-            <a href="viewstaff1.php">
-              <i class="bi bi-circle"></i><span>View Staff</span>
-            </a>
-          </li>
-          <li>
-         
-          <li>
-          <a href="viewservicearea1.php">
-              <i class="bi bi-circle"></i><span> ServiceArea</span>
-            </a>
-          </li>
-          <li>
-          <a href="staffservicearea1.php">
-              <i class="bi bi-circle"></i><span>Staff ServiceArea</span>
-            </a>
-          </li>
-          <li>
-            
-          </li>
-        </ul>
-      </li><!-- End Components Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-cart3"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
+        </ul>
+        <li class="nav-item">
+        <a class="nav-link collapsed" href="youraccount.php">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Your Account</span>
         </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-         
-          <li>
-          <a href="viewproduct1.php">
-              <i class="bi bi-circle"></i><span>View Product</span>
-            </a>
-          </li>
-         
-          <a href="stock1.php">
-              <i class="bi bi-circle"></i><span> Cyllinder </span>
-            </a>
-          </li>
-          <li>
-         
-          </li>
-        </ul>
-      </li><!-- End Forms Nav -->
-
-    
-<!-- End Icons Nav -->
-    
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-person"></i><span>Customer Management</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="approvegasconn1.php">
-              <i class="bi bi-circle"></i><span>Approve Gas Connection</span>
-            </a>
-          </li>
-          <li>
-          <li>
-            <a href="viewfeedback1.php">
-              <i class="bi bi-circle"></i><span>View Feedback</span>
-            </a>
-          </li>
-        </ul>
       </li>
-      
-     
-      
-      <li class="nav-heading">Pages</li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ADMINPROFILE.php">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-telephone"></i>
-          <span>Contact</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
-
-
       <li class="nav-item">
         <a class="nav-link collapsed" href="logout.php">
           <i class="bi bi-box-arrow-in-right"></i>
@@ -282,11 +142,11 @@ include("connection.php");
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <h1>Your Oders</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Oders</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -298,7 +158,7 @@ include("connection.php");
         
 
             <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-4">
+            <div class="col-xxl-4 col-md-13">
               <div class="card info-card sales-card">
 
                 <div class="filter">
@@ -335,7 +195,7 @@ include("connection.php");
             
 
             <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-4">
+            <div class="col-xxl-4 col-md-13">
               <div class="card info-card revenue-card">
 
                 <div class="filter">
@@ -391,7 +251,7 @@ include("connection.php");
             
 
             <!-- Customers Card -->
-            <div class="col-xxl-4 col-md-4">
+            <div class="col-xxl-4 col-md-13">
 
             <div class="card info-card customers-card" style="height: 160px;">
 
@@ -630,64 +490,7 @@ include("connection.php");
                   </ul>
                 </div>
 
-                <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
-
-                  <!-- Line Chart -->
-                  <div id="reportsChart"></div>
-
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
-                        chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                            show: false
-                          },
-                        },
-                        markers: {
-                          size: 4
-                        },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                        fill: {
-                          type: "gradient",
-                          gradient: {
-                            shadeIntensity: 1,
-                            opacityFrom: 0.3,
-                            opacityTo: 0.4,
-                            stops: [0, 90, 100]
-                          }
-                        },
-                        dataLabels: {
-                          enabled: false
-                        },
-                        stroke: {
-                          curve: 'smooth',
-                          width: 2
-                        },
-                        xaxis: {
-                          type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                        },
-                        tooltip: {
-                          x: {
-                            format: 'dd/MM/yy HH:mm'
-                          },
-                        }
-                      }).render();
-                    });
-                  </script>
+               
                   <!-- End Line Chart -->
 
                 </div>

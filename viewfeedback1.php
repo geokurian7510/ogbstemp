@@ -413,46 +413,42 @@ else{
 
               <!-- Table with stripped rows -->
               <table class="table table-light table-striped" style="opacity: 1;">
-            <thead>
-           
-                <tr>
-                    <th>Id</th>
-                    <th>userid</th>
-                    <th>date</th>
-                    <th>comment</th>
-                    <th>rating</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $sql = "SELECT * FROM feedback ";
-                $result = mysqli_query($conn,$sql);
-                while ($row = mysqli_fetch_array($result)) {
-                ?>
-                           
-                                        
-                                    <tr><td><?php echo $row['feedback_id']?></td>
-                                    <td><?php echo $row['c_id']?></td>
-                                    <td><?php echo $row['date']?></td>
-                                    <td><?php echo $row['comment']?></td>
-                                    <td><?php echo $row['rating']?></td>
-                                   
-                                    <td>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>userid</th>
+            <th>customer_name</th>
+            <th>date</th>
+            <th>comment</th>
+            <th>rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        $sql = "SELECT feedback.*, customer.f_name 
+                FROM feedback
+                JOIN customer ON feedback.c_id = customer.c_id";
+        $result = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($result)) {
+        ?>
+            <tr>
+                <td><?php echo $row['feedback_id'] ?></td>
+                <td><?php echo $row['c_id'] ?></td>
+                <td><?php echo $row['f_name'] ?></td>
+                <td><?php echo $row['date'] ?></td>
+                <td><?php echo $row['comment'] ?></td>
+                <td><?php echo $row['rating'] ?></td>
+                <td>
+                    <form method="POST" action="viewfeedback1.php">
+                        <input type="hidden" name="ids" value="<?php echo $row['feedback_id']; ?>">
+                        <input type="submit" name="feedback_id" value="DELETE" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
 
-                                    
-                                    <form method="POST" action="viewfeedback1.php">
-                                    <input type="hidden" name="ids" value="<?php echo $row['feedback_id'];?>">
-                                    <input type="submit" name="feedback_id" value="DELETE" class="btn btn-danger" >
-                </form>
-                                    </td>
-                                    
-                
-                                    
-                </tr>
-                                    
-                <?php } ?>
-            </tbody>
-        </table>
               
               <!-- End Table with stripped rows -->
 

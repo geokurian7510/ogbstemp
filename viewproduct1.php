@@ -1,17 +1,25 @@
 
 
-<?php include('connection.php');
-if($_SERVER["REQUEST_METHOD"]=="POST")
-{
-    echo "inside isset";
-    $id=$_POST['s_id'];
-    echo $id;
-    $sql="DELETE FROM tbl_product WHERE pro_id='".$id."'";
-    $result=mysqli_query($conn,$sql);
+<?php
+include_once 'connection.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['pro_id'])) {
+    $pro_id = $_POST['ids']; // Get the product ID to be deleted
+
+    // Perform a DELETE query to remove the product from the table
+    $sql = "DELETE FROM tbl_product WHERE pro_id = $pro_id";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        echo "Product with ID $pro_id has been deleted.";
+    } else {
+        echo "Failed to delete product with ID $pro_id: " . mysqli_error($conn);
+    }
+} else {
+    echo "";
 }
-else{
-   
-}?>
+?>
+
  <!DOCTYPE html>
 <html lang="en">
 
@@ -413,6 +421,7 @@ else{
   </aside><!-- End Sidebar-->
   <main id="main" class="main">
 
+  <a href="addproduct1.php" class="btn btn-success" style="float: right;">ADD PRODUCT</a>
 
               <!-- Table with stripped rows -->
               <table class="table table-light table-striped" style="opacity: 1;">
@@ -448,7 +457,7 @@ else{
                 </form>
                 <form method="POST" action="editproduct.php">
                     <input type="hidden" name="ids" value="<?php echo $row['pro_id']; ?>">
-                    <input type="submit" name="pro_id" value="EDIT" class="btn btn-primary">
+                    <input type="submit" name="pro_id" value="Update" class="btn btn-primary">
                 </form>
             </td>
         </tr>
@@ -471,18 +480,18 @@ else{
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+      &copy; <strong><span></span></strong>
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      <a href="https://bootstrapmade.com/"></a>
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"></a>
 
   <!-- Vendor JS Files -->
   <script src="vendor/apexcharts/apexcharts.min.js"></script>

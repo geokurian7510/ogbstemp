@@ -9,15 +9,15 @@
 <?php
 // Include your database connection code here
 include('connection.php');
-
 if (isset($_POST['update_product'])) {
     $product_id = $_POST['product_id'];
     $product_name = $_POST['product_name'];
     $product_description = $_POST['product_description'];
     $stock = $_POST['stock'];
     $pro_price = $_POST['pro_price'];
-
+   
     // Check if a new image was uploaded
+    
     if ($_FILES['product_image']['error'] === UPLOAD_ERR_OK) {
         $product_image = $_FILES['product_image']['name'];
 
@@ -25,27 +25,44 @@ if (isset($_POST['update_product'])) {
         $upload_dir = 'uploads/';
         move_uploaded_file($_FILES['product_image']['tmp_name'], $upload_dir . $product_image);
     } else {
-        // If no new image was uploaded, keep the existing image in the database
-        $product_image = $row['pro_img'];
+      // If no new image was uploaded, keep the existing image in the database
+        $product_image = $_POST['pro_img'];
     }
 
     // Update the product in the database
-    $sql = "UPDATE tbl_product SET pro_name = '$product_name', pro_description = '$product_description', pro_img = '$product_image', pro_price = '$pro_price', stock = '$stock' WHERE pro_id = $product_id";
-    $result = mysqli_query($conn, $sql);
+  // Update the product in the database
+
+  // Code to be executed if $_POST['pro_img'] is set and not null
+
+
+
+if(empty($_FILES['product_image']['name'])){
+  $sql = "UPDATE tbl_product SET pro_name = '$product_name', pro_description = '$product_description', pro_price = '$pro_price', stock = '$stock' WHERE pro_id = $product_id";
+  $result = mysqli_query($conn, $sql);
+  
+}
+else{
+  $sql = "UPDATE tbl_product SET pro_name = '$product_name', pro_description = '$product_description', pro_img = '$product_image', pro_price = '$pro_price', stock = '$stock' WHERE pro_id = $product_id";
+  $result = mysqli_query($conn, $sql);
+  
+}
+
+
 
     if ($result) {
+      ?>
+      <script>
+          Swal.fire({
+              icon: 'success',
+              text: 'Product Updated Successfully',
+              didClose: () => {
+                  window.location.replace('viewproduct1.php');
+              }
+          });
+      </script>
+      <?php
         // Product updated successfully
-        ?>
-        <script>
-            Swal.fire({
-                icon: 'success',
-                text: 'Product Updated Successfully',
-                didClose: () => {
-                    window.location.replace('viewproduct1.php');
-                }
-            });
-        </script>
-        <?php
+       
     } else {
         // Error occurred while updating
         echo "Error updating product: " . mysqli_error($conn);
@@ -536,8 +553,9 @@ if (isset($_POST['update_product'])) {
             <label for="product_description">Product Description:</label>
             <textarea name="product_description"><?php echo $row['pro_description']; ?></textarea><br>
 
-            <label for="product_image">Product Image:</label>
-            <input type="file" name="product_image"><br>
+            <label for="product_image">Product Image choosed:</label>
+            <img src="./uploads/<?php  echo $row['pro_img'];?>" style="width:50px;height:50px">
+            <input type="file" name="product_image" value="<?php echo $row['pro_img'];?>"><br>
 
             <input type="submit" class="btn btn-success" name="update_product" value="Update">
         </form>

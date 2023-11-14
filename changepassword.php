@@ -185,20 +185,7 @@ $conn->close();
          </div>
          <!-- logo section end -->
          <!-- header section start -->
-         <div class="header_section">
-            <div class="container">
-               <div class="containt_main">
-                  <div id="mySidenav" class="sidenav">
-                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                     <h2>Hello Readers!</h2>
-                     <a href="index.html">Home</a>
-                     <a href="#">New Arrivals</a>
-                     <a href="#">Best Sellers</a>
-                     <a href="#">Featured Authors</a>
-                     <a href="#">Today's deals</a>
-                  </div>
-                  
-                  </div>
+         
                   <div class="header_box">
                      <!--<div class="lang_box ">
                         <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">

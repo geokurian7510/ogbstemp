@@ -178,7 +178,9 @@ The ogbs Team'; // Your email content
 		<meta charset="utf-8">
 		<title>customerRegistrationForm</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
+		<link rel="stylesheet" href="css/register.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
 		<!-- MATERIAL DESIGN ICONIC FONT -->
 		<link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
@@ -223,9 +225,9 @@ The ogbs Team'; // Your email content
 						<input type="password" placeholder="Confirm Password" name="confirmpassword" class="form-control">
 						<i class="zmdi zmdi-lock"></i>
 					</div>
-					<button>
-						<input type="submit" value="REGISTER" name="submit" i class="zmdi zmdi-arrow-right">
-</button>
+					
+						<input type="submit" value="REGISTER" class="btn btn-success"name="submit" i class="zmdi zmdi-arrow-right">
+
 
 				</form>
 			</div>

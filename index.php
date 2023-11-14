@@ -158,6 +158,7 @@ else{
 						<div class="input-group">
 							<i class='bx bxs-lock-alt'></i>
 							<input type="password" placeholder="Password" name="password">
+							<label><br><a href="forgotpwd.php" >forgot password?</a></label>
 						</div>
 						<button>
 							LOGIN
@@ -208,7 +209,7 @@ else{
 					</p>
 				</div>
 				<div class="img sign-in">
-					<img src="images/LPG3.png" alt="welcome">
+					<img src="images/png.png" alt="welcome">
 				</div>
 			</div>
 			<!-- END SIGN IN CONTENT -->

@@ -1,13 +1,42 @@
 <?php
+include_once 'connection.php';
+
+// Query to retrieve the cylinder_name and image fields from the "cylinder" table
+?>
+<?php
+include_once 'connection.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    echo "Inside POST";
+
+    $conn_amount = $_POST['conn_amount'];
+    $c_price = $_POST['c_price'];
+
+    // Perform an update query to update conn_amount and c_price
+    $sql = "UPDATE cylinder SET conn_amount = '$conn_amount', c_price = '$c_price'";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        echo "Update successful";
+    } else {
+        echo "Update failed: " . mysqli_error($conn);
+    }
+} else {
+    echo "POST request not received";
+}
+?>
+
+
+<?php
 include_once'connection.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     echo "inside POST";
-    $category=$_POST['category'];
     $quantity=$_POST['quantity'];
-    echo $category;
-    echo $quantity;
-    $sql = "insert into stock(categoryid,quantity) values('$category','$quantity')";
+    $c_price=$_POST['c_price'];
+
+    $sql="update cylinder set quantity=quantity + '".$quantity."'";
+    //$sql = "insert into stock(quantity) values('$quantity')";
     $result=mysqli_query($conn,$sql);
 }
 else{
@@ -85,7 +114,7 @@ body{
     border-radius: 50%;
 }
 form{
-    height: 520px;
+    height: 850px;
     width: 400px;
     background: transparent;
     position: absolute;
@@ -181,7 +210,14 @@ button{
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
             <li class="dropdown-header">
-              You have 4 new notifications
+            <?php
+                   if (['stock'] == 0) {
+                     stock:  echo  '<span class="badge badge-success" style="background-color: green; color: white;"> Stock Available</span>';
+                   } 
+                    else {
+                       echo '<span class="badge badge-warning" style="background-color: red; color: black;">OutOfStock</span>';
+                   }
+                   ?>
               <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
             </li>
             <li>
@@ -503,30 +539,62 @@ button{
 
   </aside><!-- End Sidebar-->
   <body> 
+    
     <div class="background">
+
    
         <div class="shape"></div>
         <div class="shape"></div>
-    
-    <form method="POST" action="stock1.php">
-        <h3>Add Stock</h3>
-       <br> <b> Enter Category: </b><?php
-  $sql = "SELECT * FROM category";
-$result = mysqli_query($conn,$sql);
-echo "<select name='category'>";
-while ($row = mysqli_fetch_array($result)) {
-    echo "<option value='" . $row['categoryid'] . "'>" . $row['category'] . "</option>";
+      <?php  
+        $sql = "SELECT * FROM cylinder";
+
+$result = mysqli_query($conn, $sql);
+
+
+
+// Close the database connection when done
+//mysqli_close($conn);
+if ($result) {
+  while ($row = mysqli_fetch_array($result)) {
+      $cylinderName = $row['cylinder_name'];
+      $imageFilename = $row['image'];
+      $quantity=$row['quantity'];
+      $c_price=$row['c_price'];
+      $conn_amount=$row['conn_amount'];
+
+      // Display the cylinder_name
+      //echo "<p>Cylinder Name: $cylinder_name</p>";
+
+      // Display the associated image from the "uploads" folder
+      
+  }
+} else {
+  echo "Error: " . mysqli_error($conn);
 }
-echo "</select>";
 ?>
+    <form method="POST" action="stock1.php">
+      <br><br>
+        <h3>CYLINDER </h3>
 
+        <label for="cat_img">Cylinder name: <?php echo $cylinderName;?></label>
+
+        <label for="product_image">cylinder image:</label><?php
+        echo '<img src="./uploads/' . $imageFilename . '" style="width:50px;height:50px">';?>
         
         
-        <label for="cat_img">quantity</label>
-        <input type="number" placeholder="quantity" name="quantity" id="quantity"><br>
+        <label for="cat_img">Existing Stock</label>
+        <input type="" placeholder="quantity" name="" id="quantity" value="<?php echo $quantity;?>">
+        <label for="cat_img">ADD Stock</label>
+        <input type="number" placeholder="quantity" name="quantity" id="quantity">
+        <label for="cat_img"> connection price</label>
 
-       
-       <input type="submit" name="Add" id = "Add" value="Add">
+        <input type="number" placeholder="price" name="conn_amount" id="quantity" value="<?php echo $conn_amount;?>">
+
+        <label for="cat_img"> Cylinder price</label>
+        <input type="number" placeholder="" name="c_price" id="quantity" value="<?php echo $c_price;?>">
+
+
+       <input type="submit"  class="btn btn-success"name="Add" id = "Add" value="Add">
        
     </form></div></div></div>
 </body>
