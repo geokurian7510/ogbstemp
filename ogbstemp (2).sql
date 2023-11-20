@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2023 at 07:13 PM
+-- Generation Time: Nov 20, 2023 at 08:41 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,19 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ogbstemp`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cart`
---
-
-CREATE TABLE `cart` (
-  `cartid` int(11) NOT NULL,
-  `pro_id` int(55) NOT NULL,
-  `c_id` int(55) NOT NULL,
-  `quantity` int(55) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -58,8 +45,13 @@ CREATE TABLE `connection` (
 --
 
 INSERT INTO `connection` (`connection_id`, `c_id`, `ratcard`, `aadharno`, `no_of_cylinder`, `photo`, `status`, `categoryid`, `date`, `paymentstatus`) VALUES
-(122, 84, 12334, '343453434534', 1, 'png.png', 0, 0, '2023-11-14 17:50:00', 0),
-(129, 84, 5655, '232312312122', 1, 'png.png', 0, 0, '2023-11-14 17:59:21', 0);
+(122, 84, 12334, '343453434534', 1, 'png.png', 1, 0, '2023-11-19 06:12:15', 0),
+(129, 84, 5655, '232312312122', 1, 'png.png', 1, 0, '2023-11-19 06:12:11', 0),
+(130, 84, 0, '34334443', 1, 'kindpng_3292685 (1).jpg', 1, 0, '2023-11-19 06:12:10', 0),
+(131, 84, 0, '', 1, '', 1, 0, '2023-11-19 06:12:08', 0),
+(132, 84, 2147483647, '', 1, '', 1, 0, '2023-11-19 06:11:44', 0),
+(134, 79, 12334, '5555', 2, 'kindpng_3292685 (1).jpg', 1, 0, '2023-11-19 06:12:07', 0),
+(137, 87, 12334, '555533336667', 1, 'kindpng_3292685 (1).jpg', 1, 0, '2023-11-19 06:12:05', 0);
 
 -- --------------------------------------------------------
 
@@ -82,7 +74,12 @@ INSERT INTO `connpro` (`connid`, `proid`, `connproid`) VALUES
 (122, 7, 167),
 (129, 5, 168),
 (129, 7, 169),
-(129, 6, 170);
+(129, 6, 170),
+(137, 5, 171),
+(137, 7, 172),
+(137, 6, 173),
+(137, 5, 174),
+(137, 7, 175);
 
 -- --------------------------------------------------------
 
@@ -122,7 +119,8 @@ INSERT INTO `customer` (`c_id`, `f_name`, `l_name`, `phn_number`, `email`, `pwd`
 (83, 'amal', 'chandran', 2147483647, 'amalc3070@gmail.com', '4321', 'customer'),
 (84, 'geo', 'kurian', 2147483647, 'geokurian7510@gmail.com', 'geo', 'customer'),
 (85, 'pappu', 'mon', 2147483647, 'pappu9@gmail.com', 'pappu', 'customer'),
-(86, 'geo', 'kurian', 2147483647, 'geokurian10@gmail.com', '6666', 'customer');
+(86, 'geo', 'kurian', 2147483647, 'geokurian10@gmail.com', '6666', 'customer'),
+(87, 'aswathy', 'ashok', 2147483647, 'aswathyashokmanalil@gmail.com', 'aswathy123', 'customer');
 
 -- --------------------------------------------------------
 
@@ -145,7 +143,7 @@ CREATE TABLE `cylinder` (
 --
 
 INSERT INTO `cylinder` (`cylinderid`, `cylinder_name`, `quantity`, `date`, `image`, `c_price`, `conn_amount`) VALUES
-(17, 'Domestic cylinder-14.2kg', 16, '2023-11-13 13:52:57', 'cylinder.jpg', 1070, 2300);
+(17, 'Domestic cylinder-14.2kg', 40, '2023-11-20 17:22:33', 'cylinder.jpeg', 1070, 2350);
 
 -- --------------------------------------------------------
 
@@ -168,7 +166,34 @@ CREATE TABLE `feedback` (
 INSERT INTO `feedback` (`feedback_id`, `c_id`, `date`, `comment`, `rating`) VALUES
 (30, 53, '2023-10-05 18:30:00', 'geokurian', 'Good'),
 (43, 82, '2023-10-15 18:30:00', 'fdgdfg', 'Average'),
-(50, 85, '2023-10-18 18:30:00', '', 'Average');
+(50, 85, '2023-10-18 18:30:00', '', 'Average'),
+(52, 84, '2023-11-14 18:30:00', 'wewqw', ''),
+(53, 84, '2023-11-14 18:30:00', '3123232', 'Average'),
+(54, 84, '2023-11-14 18:30:00', 'kjhjhjhkjh', 'Average'),
+(55, 84, '2023-11-14 18:30:00', 'jkkjhj', 'Average'),
+(56, 84, '2023-11-14 18:30:00', 'ddd', 'Below Average'),
+(57, 84, '2023-11-15 18:30:00', 'nmhgjhg', 'Below Average');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gas_cylinder_bookings`
+--
+
+CREATE TABLE `gas_cylinder_bookings` (
+  `book_id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `booking_date` date DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `gas_cylinder_bookings`
+--
+
+INSERT INTO `gas_cylinder_bookings` (`book_id`, `user_id`, `booking_date`, `status`) VALUES
+(3, 84, '2023-11-18', 1),
+(4, 84, '2023-11-20', 0);
 
 -- --------------------------------------------------------
 
@@ -200,14 +225,73 @@ INSERT INTO `login` (`id`, `email`, `pwd`, `typeofuser`) VALUES
 (110, 'pappu9@gmail.com', 'pappu', 'customer'),
 (111, 'geokurian10@gmail.com', '6666', 'customer'),
 (112, 'geokurian7510@gmail.com', 'geo', 'staff'),
-(113, 'geokurian750@gmail.com', 'staff', 'staff'),
+(113, 'geokurian750@gmail.com', '1234', 'staff'),
 (114, 'geokurian70@gmail.com', '1234', 'staff'),
-(115, 'geokurian7000@gmail.com', '1234', 'staff'),
+(115, 'geokurian7000@gmail.com', 'eee', 'staff'),
 (116, 'geokurian70000@gmail.com', '1234', 'staff'),
 (117, 'geokurian@gmail.com', '1234', 'staff'),
 (118, 'geokurian00@gmail.com', '1234', 'staff'),
 (119, 'geokurian509@gmail.com', '1234', 'staff'),
-(120, 'jeevansuresh395@gmail.com', 'qaz', 'staff');
+(120, 'jeevansuresh395@gmail.com', 'qaz', 'staff'),
+(121, 'aswathyashokmanalil@gmail.com', 'aswathy123', 'customer');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oder`
+--
+
+CREATE TABLE `oder` (
+  `oder_id` int(11) NOT NULL,
+  `c_id` int(11) NOT NULL,
+  `pro_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `orderdate` date NOT NULL,
+  `status` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `oder`
+--
+
+INSERT INTO `oder` (`oder_id`, `c_id`, `pro_id`, `quantity`, `amount`, `orderdate`, `status`) VALUES
+(9, 84, 5, 10, 8000, '2023-11-20', 0),
+(10, 84, 6, 10, 8000, '2023-11-20', 2),
+(11, 84, 7, 10, 8000, '2023-11-20', 1),
+(12, 84, 6, 3, 300, '2023-11-20', 1),
+(13, 84, 6, 3, 300, '2023-11-20', 2),
+(14, 84, 7, 3, 300, '2023-11-20', 0),
+(15, 84, 5, 1, 300, '2023-11-20', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orderpayment`
+--
+
+CREATE TABLE `orderpayment` (
+  `orderpayment_id` int(11) NOT NULL,
+  `cardnumber` int(11) NOT NULL,
+  `cardname` int(11) NOT NULL,
+  `year` int(11) NOT NULL,
+  `month` int(11) NOT NULL,
+  `cvv` int(11) NOT NULL,
+  `oder_id` int(11) NOT NULL,
+  `amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orderpayment`
+--
+
+INSERT INTO `orderpayment` (`orderpayment_id`, `cardnumber`, `cardname`, `year`, `month`, `cvv`, `oder_id`, `amount`) VALUES
+(2, 2028, 2343, 7, 233, 0, 9, 8160),
+(3, 2028, 3454, 5, 344, 0, 10, 102),
+(4, 2026, 5346, 8, 435, 0, 11, 306),
+(5, 2029, 7765, 4, 777, 0, 12, 306),
+(6, 2024, 7678, 11, 888, 0, 13, 102),
+(7, 2029, 3434, 8, 222, 3, 14, 306);
 
 -- --------------------------------------------------------
 
@@ -258,7 +342,11 @@ INSERT INTO `otp_table` (`id`, `email`, `otp`, `timestamp`, `status`) VALUES
 (28, 'geokurian7510@gmail.com', 419867, '2023-11-14 15:56:53', 'used'),
 (29, 'geokurian7510@gmail.com', 555340, '2023-11-14 15:59:11', 'used'),
 (30, 'geokurian7510@gmail.com', 658430, '2023-11-14 16:06:48', 'unused'),
-(31, 'geokurian7510@gmail.com', 352663, '2023-11-14 16:44:53', 'unused');
+(31, 'geokurian7510@gmail.com', 352663, '2023-11-14 16:44:53', 'unused'),
+(32, 'geokurian7510@gmail.com', 329293, '2023-11-15 15:58:32', 'unused'),
+(33, 'geokurian7510@gmail.com', 556322, '2023-11-16 17:41:53', 'unused'),
+(34, 'geokurian7510@gmail.com', 776299, '2023-11-17 08:26:55', 'unused'),
+(35, 'geokurian7510@gmail.com', 724486, '2023-11-17 08:29:10', 'used');
 
 -- --------------------------------------------------------
 
@@ -273,19 +361,17 @@ CREATE TABLE `payment` (
   `cardno` int(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `cvv` int(11) NOT NULL,
-  `c_id` int(11) NOT NULL
+  `c_id` int(11) NOT NULL,
+  `amount` float NOT NULL,
+  `type` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`paymentid`, `year`, `month`, `cardno`, `name`, `cvv`, `c_id`) VALUES
-(27, '2023', '12', 3242, '32424324234234324234324', 355, 0),
-(30, '2026', '07', 2342, 'geo', 334, 0),
-(31, '2026', '11', 4543, 'GEO', 667, 0),
-(32, '2031', '05', 989, 'j5656755656', 989, 0),
-(33, '2026', '07', 3264, '4324324234', 242, 0);
+INSERT INTO `payment` (`paymentid`, `year`, `month`, `cardno`, `name`, `cvv`, `c_id`, `amount`, `type`) VALUES
+(34, '2026', '04', 5534, 'geo dddddddd', 222, 84, 905.76, 'connection');
 
 -- --------------------------------------------------------
 
@@ -304,7 +390,10 @@ CREATE TABLE `servicearea` (
 --
 
 INSERT INTO `servicearea` (`serviceid`, `pincode`, `location`) VALUES
-(29, 686606, 'vaikom');
+(32, 686606, 'vaikom'),
+(36, 233232, 'tv puram'),
+(37, 23234324, 'alapuzha'),
+(38, 2147483647, 'kochi');
 
 -- --------------------------------------------------------
 
@@ -329,7 +418,7 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`s_id`, `f_name`, `l_name`, `phn_number`, `email`, `pwd`, `typeofuser`, `status`) VALUES
 (41, 'geo', 'kurian', 400430254, 'geokurian750@gmail.com', '1234', 'staff', 1),
-(43, 'geo', 'kurian', 940043025, 'geokurian7000@gmail.com', '1234', 'staff', 0),
+(43, 'geo', 'kurian', 940043025, 'geokurian7000@gmail.com', 'abc', 'staff', 0),
 (45, 'geo', 'kurian', 940043025, 'geokurian@gmail.com', '1234', 'staff', 2),
 (48, 'geo', 'kurian', 2147483647, 'geokurian509@gmail.com', '1234', 'staff', 1),
 (49, 'jeevan', 'suresh', 2147483647, 'jeevansuresh395@gmail.com', 'qaz', 'staff', 0);
@@ -345,6 +434,14 @@ CREATE TABLE `staffservicearea` (
   `s_id` int(11) NOT NULL,
   `serviceid` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `staffservicearea`
+--
+
+INSERT INTO `staffservicearea` (`staffservice_id`, `s_id`, `serviceid`) VALUES
+(38, 41, 32),
+(42, 48, 37);
 
 -- --------------------------------------------------------
 
@@ -370,11 +467,9 @@ CREATE TABLE `tbl_address` (
 --
 
 INSERT INTO `tbl_address` (`address_id`, `c_id`, `address_fullname`, `address_line`, `address_city`, `address_state`, `address_postalcode`, `address_country`, `address_phone`, `created_at`) VALUES
-(43, 54, 'geo kurian', 'ghdgfd', 'vaikom', 'Kerala', '686606', 'India', '09400430254', '2023-10-13 06:13:07'),
-(44, 82, 'geo kurian', 'ghdgfd', 'vaikom', 'Kerala', '686606', 'India', '09400430254', '2023-10-15 18:26:05'),
-(45, 84, 'geo kurian', 'ghdgfd', 'vaikom', 'Kerala', '686606', 'India', '09400430254', '2023-10-19 17:44:22'),
-(46, 85, 'geo kurian', 'ghdgfd', 'vaikom', 'Kerala', '686606', 'India', '09400430254', '2023-10-19 17:48:36'),
-(47, 77, 'jeeee', 'ghdgfd', 'vaikom', 'Kerala', '686606', 'India', '09400430254', '2023-10-26 08:57:37');
+(49, 84, 'geo kurian', 'ghdgfd', 'vaikom', 'Kerala', '686606', 'India', '09400430254', '2023-11-18 08:33:45'),
+(50, 79, 'geo kurian', 'ghdgfd', 'vaikom', 'Kerala', '686606', 'India', '09400430254', '2023-11-18 08:42:25'),
+(51, 87, 'aswathy', 'ghdgfd', 'vaikom', 'Kerala', '686606', 'India', '09400430254', '2023-11-18 08:58:27');
 
 -- --------------------------------------------------------
 
@@ -403,14 +498,6 @@ INSERT INTO `tbl_product` (`pro_id`, `pro_name`, `pro_price`, `pro_img`, `stock`
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cartid`),
-  ADD KEY `cart_ibfk_1` (`c_id`),
-  ADD KEY `pro_id` (`pro_id`);
 
 --
 -- Indexes for table `connection`
@@ -451,10 +538,32 @@ ALTER TABLE `feedback`
   ADD KEY `c_id` (`c_id`);
 
 --
+-- Indexes for table `gas_cylinder_bookings`
+--
+ALTER TABLE `gas_cylinder_bookings`
+  ADD PRIMARY KEY (`book_id`),
+  ADD UNIQUE KEY `user_date_unique` (`user_id`,`booking_date`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oder`
+--
+ALTER TABLE `oder`
+  ADD PRIMARY KEY (`oder_id`),
+  ADD KEY `od` (`c_id`),
+  ADD KEY `oder_ibfk_1` (`pro_id`);
+
+--
+-- Indexes for table `orderpayment`
+--
+ALTER TABLE `orderpayment`
+  ADD PRIMARY KEY (`orderpayment_id`),
+  ADD KEY `oder_id` (`oder_id`);
 
 --
 -- Indexes for table `otp_table`
@@ -509,64 +618,76 @@ ALTER TABLE `tbl_product`
 --
 
 --
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-  MODIFY `cartid` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `connection`
 --
 ALTER TABLE `connection`
-  MODIFY `connection_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `connection_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `connpro`
 --
 ALTER TABLE `connpro`
-  MODIFY `connproid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `connproid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `c_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `c_id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `cylinder`
 --
 ALTER TABLE `cylinder`
-  MODIFY `cylinderid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `cylinderid` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+
+--
+-- AUTO_INCREMENT for table `gas_cylinder_bookings`
+--
+ALTER TABLE `gas_cylinder_bookings`
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+
+--
+-- AUTO_INCREMENT for table `oder`
+--
+ALTER TABLE `oder`
+  MODIFY `oder_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `orderpayment`
+--
+ALTER TABLE `orderpayment`
+  MODIFY `orderpayment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `otp_table`
 --
 ALTER TABLE `otp_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `paymentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `paymentid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `servicearea`
 --
 ALTER TABLE `servicearea`
-  MODIFY `serviceid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `serviceid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `staff`
@@ -578,13 +699,13 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `staffservicearea`
 --
 ALTER TABLE `staffservicearea`
-  MODIFY `staffservice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `staffservice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `tbl_address`
 --
 ALTER TABLE `tbl_address`
-  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
@@ -595,13 +716,6 @@ ALTER TABLE `tbl_product`
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`pro_id`) REFERENCES `tbl_product` (`pro_id`);
 
 --
 -- Constraints for table `connection`
@@ -621,6 +735,25 @@ ALTER TABLE `connpro`
 --
 ALTER TABLE `feedback`
   ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`);
+
+--
+-- Constraints for table `oder`
+--
+ALTER TABLE `oder`
+  ADD CONSTRAINT `od` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `oder_ibfk_1` FOREIGN KEY (`pro_id`) REFERENCES `tbl_product` (`pro_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `orderpayment`
+--
+ALTER TABLE `orderpayment`
+  ADD CONSTRAINT `orderpayment_ibfk_1` FOREIGN KEY (`oder_id`) REFERENCES `oder` (`oder_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `payment`
+--
+ALTER TABLE `payment`
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`c_id`) REFERENCES `customer` (`c_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `staffservicearea`
