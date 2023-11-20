@@ -1,24 +1,8 @@
+
 <?php
 session_start();
 include("connection.php");
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  $id = $_POST['ids'];
-  
-  // Update the status to 2
-  $sql = "UPDATE oder SET status = 1 WHERE oder_id = '".$id."'";
-  
-  if ($result = mysqli_query($conn, $sql)) {
-      // Query executed successfully, you can add any further logic here if needed
-  } else {
-      // Error in the query
-      echo "Error updating status: " . mysqli_error($conn);
-  }
-} else {
-  // Not a POST request
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,16 +123,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="staffdashboard1.php">
+        <a class="nav-link " href="admin2.php">
           <i class="bi bi-grid"></i>
           <span> Staff Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed " href="staffcylinder.php">
-          <i class="bi bi-cart"></i>
-          <span> Cylinder Orders</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
@@ -377,98 +354,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        </div>
     </div>
 
-  <table class="table table-striped" style="margin-top:50px;margin-left:50px;">
-  <h1><b>PRODUCT BOOKINGS</b></h1>
-  <thead>
-    <tr>
-      <th scope="col">oderid</th>
-    <th scope="col">price</th>
-      <th scope="col">quantity</th>
-      <th scope="col">date</th>
-      <th scope="col">Status</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php 
-    // Assuming you have already established a database connection ($conn)
-    if (isset($_SESSION['staffid'])) {
-        $s_id =$_SESSION["staffid"];
-        
-      $sql="select s.*,ssa.*,sa.* from  staff s join staffservicearea ssa on s.s_id=ssa.s_id 
-                                                join servicearea sa on ssa.serviceid=sa.serviceid where  s.s_id='".$s_id."'";
-                                                $result=mysqli_query($conn,$sql);
-                                                $row= mysqli_fetch_array($result);
-
-                                                $pin=$row['pincode'];
-
-                                                $sql = "SELECT o.*, cu.*, ad.* 
-                                                FROM oder o
-                                                JOIN customer cu ON o.c_id = cu.c_id
-                                                JOIN tbl_address ad ON ad.c_id = cu.c_id
-                                                WHERE ad.address_postalcode = '".$pin."' AND o.status != 2";
-                                        
-
-                
-                $result=mysqli_query($conn,$sql);
-  $count=mysqli_num_rows($result);
-
-        while ($row=mysqli_fetch_array($result)) {
-    ?>
-        <tr>
-        <td><?php echo $row['oder_id'];?></td>
-            <td><?php echo $row['amount']; ?></td>
-            <td><?php echo $row['quantity']; ?></td>
-            <td><?php echo $row['orderdate']; ?></td>
-            <td>
-        <?php
-            if ($row['status'] == 1) {
-                echo ' <span class="badge badge-success" style="background-color: green; color: black;">DELIIVERED</span>';
-            } else {
-                echo ' <span class="badge badge-success" style="background-color: yellow; color: black;">Pending</span>';
-            }
-        ?>
-    </td>
-               <td>
-        
-
-         <!--  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-order-id="<?php echo $row['o_masterid']; ?>">
-  VIEWMORE
-</button>
-           -->   <div class="col">
-           <form method="POST" action="staffdashboard1.php">
-                        <input type="hidden" name="ids" value="<?php echo $row['oder_id']; ?>">
-                        <button type="submit" class="btn btn-danger">Delivered</button>
-                  
-                        </form>      
-    <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#feedbackModal">ViewDetails</button>
-</div>  
-
-        </td>
-        </tr>
-    <?php
   
-        }
-    } else {
-        echo "Customer ID not found in session.";
-    }
-    ?>
-  </tbody>
-</table>
-
-
-
-  <table class="table table-striped" style="margin-top:50px;margin-left:50px;">
-  <H1><B>Cylinder</B></H1>
-  <thead>
-    <tr>
-      <th scope="col">oderid</th>
-      <th scope="col">date</th>
-
-      <th scope="col">Customerid</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
   <tbody>
     <?php 
     // Assuming you have already established a database connection ($conn)
@@ -505,9 +391,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   VIEWMORE
 </button>
            -->
-          <button class="btn btn-success update-status-btn" data-order-id="">Delivered</button>
-          <button class="btn btn-warning" data-order-id="">View Details</button>
-
+     
         </td>
         </tr>
     <?php

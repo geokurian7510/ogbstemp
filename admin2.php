@@ -182,11 +182,7 @@ include("connection.php");
           <li>
          
           <li>
-          <a href="viewservicearea1.php">
-              <i class="bi bi-circle"></i><span> ServiceArea</span>
-            </a>
-          </li>
-          <li>
+          
           <a href="staffservicearea1.php">
               <i class="bi bi-circle"></i><span>Staff ServiceArea</span>
             </a>
@@ -215,7 +211,11 @@ include("connection.php");
             </a>
           </li>
           <li>
-         
+          <a href="viewoderadmin.php">
+              <i class="bi bi-circle"></i><span>View Bookings </span>
+            </a>
+          </li>
+          <li>
           </li>
         </ul>
       </li><!-- End Forms Nav -->
@@ -255,12 +255,7 @@ include("connection.php");
       </li><!-- End Profile Page Nav -->
 
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-telephone"></i>
-          <span>Contact</span>
-        </a>
-      </li><!-- End Contact Page Nav -->
+   <!-- End Contact Page Nav -->
 
 
       <li class="nav-item">
@@ -321,9 +316,28 @@ include("connection.php");
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                    <?php
+      // Include the connection.php file to establish the database connection
+      include('connection.php');
 
+      // SQL query to count the number of rows in the "customer" table
+      $sql = "SELECT COUNT(*) as total_oder FROM oder ";
+
+      // Execute the query
+      $result = mysqli_query($conn, $sql);
+
+      if ($result) {
+        // Fetch the result row
+        $row = $result->fetch_assoc();
+        $totaloder = $row['total_oder'];
+        echo '<h6>' . $totaloder . '</h6>';
+        // Close the result set
+        $result->close();
+      } else {
+        echo "Error: " . $mysqli->error;
+      }
+    ?>
+    
 
                       
                     </div>

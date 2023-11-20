@@ -129,18 +129,21 @@
                            </div>
                         </div>
                         <div class="carousel-item">
-                           <div class="banner_taital_main">
-                              <h1 class="banner_taital">DELIVER <br>TO YOUR FINGERTIP</h1>
-                              <p class="banner_text">Experience the ultimate convenience with our free delivery of LPG gas. 
-                                 We understand that a reliable and timely supply of cooking gas is essential for every household. 
-                                 That's why we offer you the added benefit of complimentary delivery, right to your doorstep. No more worrying about running out of gas or the hassle of lugging heavy cylinders from the store. Our efficient delivery service ensures that you have a constant supply of LPG gas, allowing you to focus on what matters most – preparing delicious meals for your family. Trust us to deliver not just LPG gas but also peace of mind, all at no extra cost to you.
-                                  Enjoy the freedom of worry-free cooking with our free LPG gas delivery service </p>
-                              <div class="btn_main">
-                                 <div class="contact_bt"><a href="#">Read More</a></div>
-                                 <div class="contact_bt active"><a href="#">Get A Quote</a></div>
-                              </div>
-                           </div>
-                        </div>
+    <img src="images/about3.jpg" alt="Carousel Image" class="d-block w-100">
+    <div class="banner_taital_main">
+        <h1 class="banner_taital">DELIVER <br>TO YOUR FINGERTIP</h1>
+        <p class="banner_text">Experience the ultimate convenience with our free delivery of LPG gas. 
+            We understand that a reliable and timely supply of cooking gas is essential for every household. 
+            That's why we offer you the added benefit of complimentary delivery, right to your doorstep. No more worrying about running out of gas or the hassle of lugging heavy cylinders from the store. Our efficient delivery service ensures that you have a constant supply of LPG gas, allowing you to focus on what matters most – preparing delicious meals for your family. Trust us to deliver not just LPG gas but also peace of mind, all at no extra cost to you.
+            Enjoy the freedom of worry-free cooking with our free LPG gas delivery service
+        </p>
+        <div class="btn_main">
+            <div class="contact_bt"><alt="Read More">Read More</div>
+            <div class="contact_bt active"><a href="#">Get A Quote</a></div>
+        </div>
+    </div>
+</div>
+
                         <div class="carousel-item">
                            <div class="banner_taital_main">
                               <h1 class="banner_taital">24*7 <br>CUSTOMER SUPPORT</h1>

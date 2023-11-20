@@ -1,6 +1,7 @@
 <?php  
 session_start();
 include("connection.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -212,10 +213,30 @@ include("connection.php");
           </div>
           <div class="ps-1">
             <h5 class="card-title text-left">Connnection </h5>
+            <?php
+            $sql="select status from connection where c_id='".$_SESSION['customerid']."'";
+            $rslt=mysqli_query($conn,$sql);
+            $row=mysqli_fetch_array($rslt);
+            if(mysqli_num_rows($rslt)==0){
+              $status=0;
+            }
+            else{
+            $status=$row['status'];}
+
+            ?>
             <span class="text-muted medium text-left pt-1 ps-1"> 
-                       <span class="badge badge-success" style="background-color: green; color: white;">Approved</span>
+              <?php if($status==1){
+                ?>
+                <span class="badge badge-success" style="background-color: green; color: white;">Approved</span>
+                <?php
+              }
+              else{
+                ?>
+                <span class="badge badge-warning" style="background-color: red; color: black;">Pending</span>
+             <?php } ?>
+                       
                  
-                       <span class="badge badge-warning" style="background-color: red; color: black;">Pending</span>
+                       
                    
                    </span>
           </div>

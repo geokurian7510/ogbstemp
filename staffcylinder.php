@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $id = $_POST['ids'];
   
   // Update the status to 2
-  $sql = "UPDATE oder SET status = 1 WHERE oder_id = '".$id."'";
+  $sql = "UPDATE gas_cylinder_bookings SET status = 1 WHERE book_id = '".$id."'";
   
   if ($result = mysqli_query($conn, $sql)) {
       // Query executed successfully, you can add any further logic here if needed
@@ -139,14 +139,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="staffdashboard1.php">
+        <a class="nav-link collapsed " href="staffdashboard1.php">
           <i class="bi bi-grid"></i>
           <span> Staff Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
       
       <li class="nav-item">
-        <a class="nav-link collapsed " href="staffcylinder.php">
+        <a class="nav-link  " href="staffcylinder.php">
           <i class="bi bi-cart"></i>
           <span> Cylinder Orders</span>
         </a>
@@ -204,157 +204,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section dashboard">
-      <div class="row">
-
-        <!-- Left side columns -->
-        
-
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card sales-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-
-                      
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
-            
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-4">
-              <div class="card info-card revenue-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Feedbacks <span>| This Month</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-chat-left-quote"></i>
-                    </div>
-                    <div class="ps-3">
-                    <?php
-      // Include the connection.php file to establish the database connection
-      include('connection.php');
-
-      // SQL query to count the number of rows in the "customer" table
-      $sql = "SELECT COUNT(*) as total_feedback FROM feedback ";
-
-      // Execute the query
-      $result = mysqli_query($conn, $sql);
-
-      if ($result) {
-        // Fetch the result row
-        $row = $result->fetch_assoc();
-        $totalfeedback = $row['total_feedback'];
-        echo '<h6>' . $totalfeedback . '</h6>';
-        // Close the result set
-        $result->close();
-      } else {
-        echo "Error: " . $mysqli->error;
-      }
-    ?>
-    
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Revenue Card -->
-            
-
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-md-4">
-
-            <div class="card info-card customers-card" style="height: 160px;">
-
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
-                  <div class="d-flex align-items-center">
-  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-    <i class="bi bi-people"></i>
-  </div>
-  <div class="ps-3">
-    <br>
-    <?php
-      // Include the connection.php file to establish the database connection
-      include('connection.php');
-
-      // SQL query to count the number of rows in the "customer" table
-      $sql = "SELECT COUNT(*) as total_customers FROM customer";
-
-      // Execute the query
-      $result = mysqli_query($conn, $sql);
-
-      if ($result) {
-        // Fetch the result row
-        $row = $result->fetch_assoc();
-        $totalCustomers = $row['total_customers'];
-        echo '<h6>' . $totalCustomers . '</h6>';
-        // Close the result set
-        $result->close();
-      } else {
-        echo "Error: " . $mysqli->error;
-      }
-    ?>
-    <span class="text-danger small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
-    </div>
-</div> </div>
-</div>  </div>
 <!--modal-------->
 <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -377,85 +226,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        </div>
     </div>
 
-  <table class="table table-striped" style="margin-top:50px;margin-left:50px;">
-  <h1><b>PRODUCT BOOKINGS</b></h1>
-  <thead>
-    <tr>
-      <th scope="col">oderid</th>
-    <th scope="col">price</th>
-      <th scope="col">quantity</th>
-      <th scope="col">date</th>
-      <th scope="col">Status</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php 
-    // Assuming you have already established a database connection ($conn)
-    if (isset($_SESSION['staffid'])) {
-        $s_id =$_SESSION["staffid"];
-        
-      $sql="select s.*,ssa.*,sa.* from  staff s join staffservicearea ssa on s.s_id=ssa.s_id 
-                                                join servicearea sa on ssa.serviceid=sa.serviceid where  s.s_id='".$s_id."'";
-                                                $result=mysqli_query($conn,$sql);
-                                                $row= mysqli_fetch_array($result);
-
-                                                $pin=$row['pincode'];
-
-                                                $sql = "SELECT o.*, cu.*, ad.* 
-                                                FROM oder o
-                                                JOIN customer cu ON o.c_id = cu.c_id
-                                                JOIN tbl_address ad ON ad.c_id = cu.c_id
-                                                WHERE ad.address_postalcode = '".$pin."' AND o.status != 2";
-                                        
-
-                
-                $result=mysqli_query($conn,$sql);
-  $count=mysqli_num_rows($result);
-
-        while ($row=mysqli_fetch_array($result)) {
-    ?>
-        <tr>
-        <td><?php echo $row['oder_id'];?></td>
-            <td><?php echo $row['amount']; ?></td>
-            <td><?php echo $row['quantity']; ?></td>
-            <td><?php echo $row['orderdate']; ?></td>
-            <td>
-        <?php
-            if ($row['status'] == 1) {
-                echo ' <span class="badge badge-success" style="background-color: green; color: black;">DELIIVERED</span>';
-            } else {
-                echo ' <span class="badge badge-success" style="background-color: yellow; color: black;">Pending</span>';
-            }
-        ?>
-    </td>
-               <td>
-        
-
-         <!--  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-order-id="<?php echo $row['o_masterid']; ?>">
-  VIEWMORE
-</button>
-           -->   <div class="col">
-           <form method="POST" action="staffdashboard1.php">
-                        <input type="hidden" name="ids" value="<?php echo $row['oder_id']; ?>">
-                        <button type="submit" class="btn btn-danger">Delivered</button>
-                  
-                        </form>      
-    <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#feedbackModal">ViewDetails</button>
-</div>  
-
-        </td>
-        </tr>
-    <?php
-  
-        }
-    } else {
-        echo "Customer ID not found in session.";
-    }
-    ?>
-  </tbody>
-</table>
-
+ <!-------->
 
 
   <table class="table table-striped" style="margin-top:50px;margin-left:50px;">
@@ -466,7 +237,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <th scope="col">date</th>
 
       <th scope="col">Customerid</th>
+      <th scope="col">status</th>
       <th scope="col">Actions</th>
+
     </tr>
   </thead>
   <tbody>
@@ -497,7 +270,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <td><?php echo $row['book_id'];?></td>
             <td><?php echo $row['booking_date']; ?></td>
             <td><?php echo $row['user_id']; ?></td>
-            <td><?php echo $row['status']; ?></td>
+            <td>
+        <?php
+            if ($row['status'] == 1) {
+                echo ' <span class="badge badge-success" style="background-color: green; color: black;">DELIIVERED</span>';
+            } else {
+                echo ' <span class="badge badge-success" style="background-color: yellow; color: black;">Pending</span>';
+            }
+        ?>
+    </td>
             <td>
         
 
@@ -505,8 +286,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   VIEWMORE
 </button>
            -->
-          <button class="btn btn-success update-status-btn" data-order-id="">Delivered</button>
-          <button class="btn btn-warning" data-order-id="">View Details</button>
+           <div class="col">
+           <form method="POST" action="staffcylinder.php">
+                        <input type="hidden" name="ids" value="<?php echo $row['book_id']; ?>">
+                        <button type="submit" class="btn btn-danger">Delivered</button>
+                  
+                        </form>      
+    <button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#feedbackModal">ViewDetails</button>
+</div>  
 
         </td>
         </tr>

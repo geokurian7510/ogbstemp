@@ -412,6 +412,7 @@ else{
   </aside><!-- End Sidebar-->
   <main id="main" class="main">
 
+  <h1><b> Gas Connections</b></h1>
 
               <!-- Table with stripped rows -->
               <table class="table table-light table-striped" style="opacity: 1;">

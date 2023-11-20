@@ -1,5 +1,5 @@
 .gradient-custom {
-    background: linear-gradient(90deg, #ffffff 0%, #ffffff 100%);
+    background: linear-gradient(90deg, rgb(218, 110, 110) 0%, #ffffff 100%);
 }
 
 .bg-image {
@@ -12,7 +12,7 @@
 }
 
 .bg-image .mask {
-    background-color: rgba(251, 251, 251, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
     position: absolute;
     top: 0;
     left: 0;

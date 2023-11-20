@@ -420,6 +420,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['pro_id'])) {
 
   </aside><!-- End Sidebar-->
   <main id="main" class="main">
+  <h1><b>View Product</b></h1>
 
   <a href="addproduct1.php" class="btn btn-success" style="float: right;">ADD PRODUCT</a>
 

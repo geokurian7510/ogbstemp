@@ -142,9 +142,14 @@ if (isset($_SESSION["customerid"])) {
 
                             <?php
                             $sqlconnprice = "select * from cylinder";
+
                             $rsltconnprice = mysqli_query($conn, $sqlconnprice);
                             $row1 = mysqli_fetch_array($rsltconnprice);
-                            $connprice = $row1['conn_amount'];
+                            $sqlno="select no_of_cylinder from connection where c_id='".$custid."'";
+                            $rsltno=mysqli_query($conn,$sqlno);
+                            $row=mysqli_fetch_array($rsltno);
+                            $num=$row['no_of_cylinder'];
+                            $connprice = $row1['conn_amount']*$num;
                             $totalamount = $tot_pro_price + $connprice;
                           
                             ?>

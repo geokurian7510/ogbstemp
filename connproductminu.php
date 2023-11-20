@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </button>
                     </div>
                     <div class="modal-body">
-                    <form method="POST" action="test.php">
+                    <form method="POST" action="connproductminu.php">
 
                         <div class="row">
 

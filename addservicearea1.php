@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             icon: 'success',
             text: 'Service Area Added sucessfully',
             didClose: () => {
-                window.location.replace('viewservicearea1.php');
+                window.location.replace('staffservicearea1.php');
             }
         });
     </script>

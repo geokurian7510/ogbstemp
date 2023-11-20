@@ -10,21 +10,24 @@
 <?php
 include('connection.php');
 session_start();
-$cust_id=$_SESSION['customerid'];
-$amount=$_SESSION['totalbill'];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve the form data
     $cardno = $_POST['cardno'];
     $year= $_POST['year'];
     $month= $_POST['month'];
     $cvv = $_POST['cvv'];
-    $name = $_POST['name'];
-    $type='connection'; 
+    $name = $_POST['name']; 
+    $amount = $_SESSION['totalbill'];
+    $orderid = $_SESSION['orderid'];
+    
+
+
     // Correct variable name
 
     // Insert the form data into the tbl_payment table
-    $sql = "INSERT INTO payment (cardno, year,month, cvv, name,c_id,amount,type) VALUES 
-    ('$cardno','$year', '$month', '$cvv', '$name','$cust_id','$amount','$type')";
+    $sql = "INSERT INTO orderpayment (cardname,cardnumber,year,month, cvv, amount,oder_id) VALUES
+     ('$cardno','$year', '$month', '$cvv', '$name','$amount','$orderid')";
 
     // Execute the SQL query
     $result = mysqli_query($conn, $sql);
@@ -595,11 +598,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     .card-item_cvv .card-item_type {
       opacity: 0.7;
     }
-    body {
-    background: #040117;
-    font-family: "Source Sans Pro", sans-serif;
-    font-size: 16px;
-}
 
     @media screen and (max-width: 360px) {
       .card-item__cvv {

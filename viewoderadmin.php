@@ -1,26 +1,20 @@
-<?php include('connection.php');
 
+<?php include('connection.php');
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
-    
+    echo "";
     $id=$_POST['ids'];
-    $sql="DELETE FROM servicearea WHERE serviceid='".$id."'";
+    $sql="DELETE FROM feedback WHERE feedback_id='".$id."'";
     $result=mysqli_query($conn,$sql);
 }
 else{
     echo "";
-}
-?>
+}?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <title>Dashboard - NiceAdmin Bootstrap Template</title>
   <meta content="" name="description">
@@ -415,69 +409,120 @@ else{
 
   </aside><!-- End Sidebar-->
   <main id="main" class="main">
-  <a href="addservicearea1.php" class="btn btn-success" style="float: right;">ADD</a>
 
-
-  <div class="modal fade" id="customModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content custom-modal">
-      <div class="modal-header">
-        <!-- Close button -->
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Are you sure you want to delete?
-      </div>
-      <div class="modal-footer">
-      <button type="button" onclick="closeModal()" class="btn btn-secondary">Close</button>
-        <button type="button" class="btn btn-danger" onclick="proceedWithDelete()">OK</button>
-      </div>
-    </div>
-  </div>
-</div>
+  <h1><b>Product Bookings</b></h1>
 
               <!-- Table with stripped rows -->
               <table class="table table-light table-striped" style="opacity: 1;">
-            <thead>
-           
-                <tr>
-                    <th>Id</th>
-                    <th>pincode</th>
-                    <th>Location</th>
-                    <th>Actions</th>
-                   
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $sql = "SELECT * FROM servicearea";
-                $result = mysqli_query($conn,$sql);
-                while ($row = mysqli_fetch_array($result)) {
-                ?>
-                           
-                                        
-                                    <tr><td><?php echo $row['serviceid']?></td>
-                                    <td><?php echo $row['pincode']?></td>
-                                    <td><?php echo $row['location']?></td>
-                                    <td>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>customer_name</th>
+            <th>Product</th>
+            <th>date</th>
+            <th>price</th>
+            <th>Quantity</th>
 
-                                    
-                                    <form id="deleteForm" action="viewservicearea1.php" method="post">
-                                    <input type="hidden" name="ids" value="<?php echo $row['serviceid'];?>">
-                                    <input type="submit" name="s_id" value="REMOVE" class="btn btn-warning" onclick="confirmDelete(event)">
-</form>
-                </form>
-                                    </td>
-                                    
-                
-                                    
-                </tr>
-                                    
-                <?php } ?>
-            </tbody>
-        </table>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+$sql = "SELECT oder.*, customer.f_name, tbl_product.pro_name 
+        FROM oder
+        JOIN customer ON oder.c_id = customer.c_id
+        JOIN tbl_product ON oder.pro_id = tbl_product.pro_id";
+$result = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_array($result)) {
+?>
+    <tr>
+        <td><?php echo $row['oder_id'] ?></td>
+        <td><?php echo $row['f_name'] ?></td>
+        <td><?php echo $row['pro_name'] ?></td>
+        <td><?php echo $row['orderdate'] ?></td>
+        <td><?php echo $row['amount'] ?></td>
+        <td><?php echo $row['quantity'] ?></td>
+                <td> <span class="badge <?php
+    if ($row['status'] == 1) {
+        echo 'badge-success';
+    } elseif ($row['status'] == 2) {
+        echo 'badge-warning';
+    } else {
+        echo 'badge-danger'; // Assuming red for other statuses, adjust as needed
+    } ?>"
+    style="background-color: <?php
+        echo ($row['status'] == 1) ? 'green' : ($row['status'] == 2 ? 'yellow' : 'red');
+    ?>;
+    color: <?php echo ($row['status'] == 1) ? 'black' : 'black'; ?>">
+    <?php
+        echo ($row['status'] == 1) ? 'DELIVERED' : ($row['status'] == 2 ? 'CANCELLED' : 'SHIPPED');
+    ?>
+</span></td>
+                <td>
+                    <form method="POST" action="viewfeedback1.php">
+                        <input type="hidden" name="ids" value="<?php echo $row['oder_id']; ?>">
+                        <input type="submit" name="feedback_id" value="DELETE" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+
+
+<h1><b>Cylinder Bookings</b></h1>
+
+              <!-- Table with stripped rows -->
+              <table class="table table-light table-striped" style="opacity: 1;">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Customer id</th>
+            <th>Customer Name</th>
+            <th>date</th>
+            <th>Status</th>
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    <?php
+        $sql = "SELECT gas_cylinder_bookings.*, customer.f_name 
+                FROM gas_cylinder_bookings
+                JOIN customer ON gas_cylinder_bookings.user_id = customer.c_id";
+        $result = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_array($result)) {
+        ?>
+            <tr>
+                <td><?php echo $row['book_id'] ?></td>
+                <td><?php echo $row['user_id'] ?></td>
+
+                <td><?php echo $row['f_name'] ?></td>
+                <td><?php echo $row['booking_date'] ?></td>
+                <td>  <?php
+$status = $row['status'];
+
+if ($status == 1) {
+    // Display a green "DELIVERED" badge
+    echo '<span class="badge badge-success" style="background-color: green; color: white;">DELIVERED</span>';
+} else {
+    // Display a red "SHIPPED" badge for any other status
+    echo '<span class="badge badge-warning" style="background-color: red; color: black;">SHIPPED</span>';
+}
+?>
+</span></td>
+                <td>
+                    <form method="POST" action="viewfeedback1.php">
+                        <input type="hidden" name="ids" value="<?php echo $row['book_id']; ?>">
+                        <input type="submit" name="feedback_id" value="DELETE" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+        <?php } ?>
+    </tbody>
+</table>
+
               
               <!-- End Table with stripped rows -->
 
@@ -515,37 +560,6 @@ else{
   <script src="vendor/simple-datatables/simple-datatables.js"></script>
   <script src="vendor/tinymce/tinymce.min.js"></script>
   <script src="vendor/php-email-form/validate.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script>document.getElementById('cancelButton').addEventListener('click', function () {
-    // Assuming your modal has an id of "myModal"
-    $('#myModal').modal('hide');
-});
-</script>
-<script>
-function confirmDelete(event) {
-  // Prevent the default form submission
-  event.preventDefault();
-
-  // Show the custom Bootstrap modal
-  $('#customModal').modal('show');
-}
-
-function proceedWithDelete() {
-  // If the user clicks "OK" in the modal, proceed with the form submission or other actions
-  document.getElementById("deleteForm").submit();
-  
-  function closeModal() {
-      // Hide the modal and overlay
-      document.getElementById('stockModal').style.display = 'none';
-      document.getElementById('overlay').style.display = 'none';
-    }
-    closeModal();
-
-}
-</script>
 
   <!-- Template Main JS File -->
   <script src="JS/admin2.js"></script>

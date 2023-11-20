@@ -166,8 +166,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <form method="post" action="varifyotp.php">
-        <h1>Enter the OTP</h1>
-        <label for="otp">Enter OTP:</label>
+        <h1>Enter the OTP:</h1>
+        <label for="otp"></label>
         <input type="text"  class="form-control" id="otp" name="otp" required>
         <br>
         <input type="submit" value="Verify OTP">

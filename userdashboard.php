@@ -1,7 +1,37 @@
 <?php
 session_start();
 include("connection.php");
+
+
+
+// Check if the "New Connection" button is clicked
+if (isset($_GET['newgasconn'])) {
+    // Check the address table for entries related to the current customer
+    $custid = $_SESSION["customerid"];
+   
+    $sql = "SELECT * FROM tbl_address WHERE c_id = '".$custid."'";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) == 0) {
+        // Redirect to one page if entries are found
+        echo "<script>alert('Complete kyc');</script>";
+        header("Location: addAddress.php");
+        exit();
+    } else {
+        // Redirect to another page if no entries are found
+        header("Location: newgasconn.php");
+        exit();
+    }
+}
 ?>
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
    <head>
@@ -32,6 +62,8 @@ include("connection.php");
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
       <style>
         .box {
             display: inline-block;
@@ -76,11 +108,15 @@ include("connection.php");
                </div>
                <div class="col-md-4">
                   <div class="header_social_icon">
-                     <ul>
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                  <ul class="social-icons">
+    <li><a href="#"><i class="fas fa-camera" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fas fa-music" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fas fa-globe" aria-hidden="true"></i></a></li>
+    <li><a href="#"><i class="fas fa-user" aria-hidden="true"></i></a></li>
+
+</ul>
+
+
                      </ul>
                   </div>
                </div>
@@ -107,7 +143,7 @@ include("connection.php");
                      </li>
                      
                      <li class="nav-item">
-                        <a class="nav-link" href="newgasconn.php"><b>New Connection</b></a>
+                     <a class="nav-link" href="?newgasconn"><b>New Connection</b></a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="#section-one"><b>Feedback</b></a>
@@ -122,11 +158,9 @@ include("connection.php");
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown_2">
                            
-                            <a class="dropdown-item" href="tracking.html">tracking</a>
+                            <a class="dropdown-item" href="#section-three">Cylinder Booking</a>
                             <a class="dropdown-item" href="checkout.html">product checkout</a>
                             <a class="dropdown-item" href="cart.html">shopping cart</a>
-                            <a class="dropdown-item" href="confirmation.html">confirmation</a>
-                            <a class="dropdown-item" href="elements.html">elements</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -213,22 +247,43 @@ include("connection.php");
       <!-- banner section end -->
      
       <!-- about section start -->
+      <?php
+    $sql = "SELECT * FROM cylinder";
+    $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+   ?>
       <div class="about_section layout_padding">
-         <div class="container-fluid">
-            <div class="row">
-               <div class="col-md-7">
-                  <div class="about_taital_main">
-                     <h1 class="about_taital">About Agency</h1>
-                     <p class="about_text">adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</p>
-                     <div class="readmore_bt"><a href="#">Read More</a></div>
-                  </div>
-               </div>
-               <div class="col-md-5 padding_right0">
-                  <div class="about_img"><img src="images/userdash.j"></div>
-               </div>
+   <div class="container-fluid">
+      <div class="row">
+      <section id="section-three"></section>
+
+         <div class="col-md-7">
+            <div class="about_taital_main">
+               <h1 class="about_taital">Gas cylinder</h1>
+               <p class="about_text">Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</p>
+               <div class="readmore_bt"><a href="#">Read More</a></div>
             </div>
          </div>
+         <div class="col-md-4 padding_right0" style="height: 400px; width: 300px;"> <!-- Adjust height and width as needed -->
+         <div class="card" style="height: 100%; width: 100%;">
+   <img src="uploads/cylinder.jpeg" class="card-img-top" alt="Product Image" style="max-width: 100%; max-height: 70%; object-fit: contain; border-bottom: 1px solid #ccc;">
+      <p class="card-price"><b>Price:</b>  ₹<?php echo $row['c_price']; ?></p>
+      <form method='POST' action='cylinderbuy.php'><input type='hidden' name='cylinderid' value="<?php echo $row['cylinderid']; ?>">
+              <input type='submit' class ="btn btn-danger" name="<?php echo $row['cylinderid']; ?>" value='Buy Now'></form>&nbsp;
+        </div>
+</div>
+<?php
+    }
+   ?>
+
+         </div>
       </div>
+   </div>
+</div>
+
+
+
+
       <!-- about section end -->
       <!-- projects section start -->
       <div class="projects_section layout_padding">
@@ -317,9 +372,8 @@ include("connection.php");
                <p class="card-text"><b>Price:</b> ₹<?php echo $row['pro_price']; ?></p>
             </div>
             <div class="card-footer">
-            <a href="cart.php?id=<?php echo $row['pro_id'];?>" class="btn btn-danger">BUY NOW</a>
-&nbsp;
-               <a href="cart.php?id=<?php echo $row['pro_id'];?>" class="btn btn-primary">Add to cart</a>
+            <form method='POST' action='buy.php'><input type='hidden' name='pro_id' value="<?php echo $row['pro_id']; ?>">
+              <input type='submit'  class ="btn btn-danger" name="<?php echo $row['pro_id']; ?>" value='Buy Now'></form>&nbsp;
             </div>
          </div>
       </div>
@@ -344,11 +398,6 @@ include("connection.php");
    </div>
 </div>
 </main>
-
-
-
-
-                  
       <!-- blog section end -->
       <!-- client section start -->
       <div class="contact_section layout_padding">
@@ -408,8 +457,7 @@ include("connection.php");
             <div class="footer_section_2">
                <div class="row">
                   <div class="col-lg-3">
-                     <div class="footeer_logo"><img src="images/logo.png"></div>
-                     <p class="lorem_text">tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea</p>
+                     <div class="footeer_logo"><img src="images/ogbslogonew.png"></div>
                   </div>
                   <div class="col-lg-3">
                      <h4 class="footer_taital">Discover</h4>
@@ -428,10 +476,7 @@ include("connection.php");
                      <p class="footer_text">Personal Info Cookie Policy Terms of Us Privacy Policy</p>
                   </div>
                   <div class="col-lg-3">
-                     <h4 class="footer_taital">Newsletter</h4>
                      <div class="form-group">
-                        <textarea class="update_mail" placeholder="Email" rows="5" id="comment" name="Email"></textarea>
-                        <div class="subscribe_bt"><a href="#">Subscribe</a></div>
                      </div>
                   </div>
                </div>

@@ -45,11 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
                 $flag=0;
             }
         }
+        $sqlcheck="select * from connection where c_id ='".$custid."'";
+        $checkrslt=mysqli_query($conn,$sqlcheck);
+        if(mysqli_num_rows($checkrslt)>0)
+        {
+            echo "<script>alert('Already have active connection');</script>";
+        }
+        else{
     $sql = "insert into connection(ratcard,c_id,aadharno,no_of_cylinder,photo) values('$ratcard','$custid','$aadharno','$no_of_cylinder','$img')";
     $result=mysqli_query($conn,$sql);
     $connid=mysqli_insert_id($conn);
     $_SESSION['connid']=$connid;
     header("location:connproductminu.php");
+        }
     ?>
             <script>
                 Swal.fire({

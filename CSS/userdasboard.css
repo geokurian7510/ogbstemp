@@ -28,7 +28,7 @@ html {
 
 body {
     color: #000000;
-    font-size: 0px;
+    font-size: 10px;
     font-family: 'Poppins', sans-serif;
     line-height: 1.80857;
     font-weight: normal;
@@ -251,8 +251,8 @@ button {
 .call_text_main{
     width: 100%;
     float: left;
-    background-color: #313131;
-    height: 50px;
+    background-color: #ffffff;
+    height: 60px;
     padding: 10px 0px;
 }
 
@@ -300,7 +300,7 @@ button {
 
 .header_social_icon li a {
     float: left;
-    color: #a8cb26;
+    color: #999e87;
     font-size: 20px;
     text-align: center;
     padding: 0px 8px;
@@ -400,15 +400,15 @@ button {
 }
 
 #banner_slider a.carousel-control-prev {
-    left: -120px;
-    top: 155px;
+    left: -30px;
+    top: 0px;
     right: initial;
 }
 
 #banner_slider a.carousel-control-next {
     right: initial;
-    top: 100px;
-    left: -120px;
+    left: -30px;
+    top: 50px;
     color: #fcf8f8;
     background-color: #b0d122;
 }
@@ -439,7 +439,7 @@ button {
     width: 100%;
     float: left;
     padding: 0px 0px;
-    background-color: #a7cd33;
+    background-color: #390f13;
     height: auto;
 }
 

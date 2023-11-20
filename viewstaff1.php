@@ -287,39 +287,28 @@ else{
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link collapsed" href="index.html">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Staff Management</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link " data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-people"></i><span>Staff Management</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="viewstaffminu.php">
-              <i class="bi bi-circle"></i><span> Approve Staff</span>
-            </a>
-          </li>
-          <li>
+          
             <a href="viewstaff1.php">
               <i class="bi bi-circle"></i><span>View Staff</span>
             </a>
           </li>
           <li>
-          <a href="viewstaff1.php">
-              <i class="bi bi-circle"></i><span>Add ServiceArea</span>
-            </a>
-          </li>
+         
           <li>
-          <a href="viewstaff1.php">
-              <i class="bi bi-circle"></i><span>View ServiceArea</span>
-            </a>
-          </li>
-          <li>
-          <a href="viewstaff1.php">
+          
+          <a href="staffservicearea1.php">
               <i class="bi bi-circle"></i><span>Staff ServiceArea</span>
             </a>
           </li>
@@ -331,16 +320,23 @@ else{
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Category</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-cart3"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="forms-elements.html">
-              <i class="bi bi-circle"></i><span>view category</span>
+         
+          <li>
+          <a href="viewproduct1.php">
+              <i class="bi bi-circle"></i><span>View Product</span>
+            </a>
+          </li>
+         
+          <a href="stock1.php">
+              <i class="bi bi-circle"></i><span> Cyllinder </span>
             </a>
           </li>
           <li>
-            
+         
           </li>
         </ul>
       </li><!-- End Forms Nav -->
@@ -351,101 +347,51 @@ else{
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Customer Management</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-person"></i><span>Customer Management</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="tables-general.html">
+            <a href="approvegasconn1.php">
               <i class="bi bi-circle"></i><span>Approve Gas Connection</span>
             </a>
           </li>
           <li>
-          <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>Cylinder Booking</span>
-            </a>
-          </li>
           <li>
-            <a href="tables-data.html">
+            <a href="viewfeedback1.php">
               <i class="bi bi-circle"></i><span>View Feedback</span>
             </a>
           </li>
         </ul>
       </li>
       
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>View Product</span>
-            </a>
-          </li>
-          <li>
-          <a href="tables-general.html">
-              <i class="bi bi-circle"></i><span>Cylinder Category</span>
-            </a>
-          </li>
-          <li>
-            <a href="tables-data.html">
-              <i class="bi bi-circle"></i><span>Cylinder Stock</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-
+     
+      
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="ADMINPROFILE.php">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
-          <i class="bi bi-question-circle"></i>
-          <span>F.A.Q</span>
-        </a>
-      </li><!-- End F.A.Q Page Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-envelope"></i>
+          <i class="bi bi-telephone"></i>
           <span>Contact</span>
         </a>
       </li><!-- End Contact Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-register.html">
-          <i class="bi bi-card-list"></i>
-          <span>Register</span>
-        </a>
-      </li><!-- End Register Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-login.html">
+        <a class="nav-link collapsed" href="logout.php">
           <i class="bi bi-box-arrow-in-right"></i>
-          <span>Login</span>
+          <span>Logout</span>
         </a>
       </li><!-- End Login Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-error-404.html">
-          <i class="bi bi-dash-circle"></i>
-          <span>Error 404</span>
-        </a>
-      </li><!-- End Error 404 Page Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-blank.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>Blank</span>
-        </a>
-      </li><!-- End Blank Page Nav -->
-
+     
     </ul>
 
   </aside><!-- End Sidebar-->

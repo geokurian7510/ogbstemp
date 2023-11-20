@@ -1,19 +1,15 @@
-<?php
-include_once 'connection.php';
 
-// Query to retrieve the cylinder_name and image fields from the "cylinder" table
-?>
 <?php
 include_once 'connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    echo "Inside POST";
+    echo "";
 
-    $conn_amount = $_POST['conn_amount'];
+    $conn_amount=$_POST['conn_amount'];
     $c_price = $_POST['c_price'];
-
+    $quantity=$_POST['quantity'];
     // Perform an update query to update conn_amount and c_price
-    $sql = "UPDATE cylinder SET conn_amount = '$conn_amount', c_price = '$c_price'";
+    $sql = "UPDATE cylinder SET conn_amount = '$conn_amount', c_price = '$c_price', quantity = quantity + $quantity";
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
@@ -22,27 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Update failed: " . mysqli_error($conn);
     }
 } else {
-    echo "POST request not received";
+    echo "";
 }
 ?>
 
 
-<?php
-include_once'connection.php';
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-    echo "inside POST";
-    $quantity=$_POST['quantity'];
-    $c_price=$_POST['c_price'];
 
-    $sql="update cylinder set quantity=quantity + '".$quantity."'";
-    //$sql = "insert into stock(quantity) values('$quantity')";
-    $result=mysqli_query($conn,$sql);
-}
-else{
-    echo "post failed";
-}
-?>
 
 <?php include_once('connection.php');?>
 <!DOCTYPE html>
@@ -83,96 +64,7 @@ else{
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
-  <style media="screen">
-      *,
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-body{
-    
-  background-image: url('images/.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-
-}
-.background{
-    width: 430px;
-    height: 520px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-}
-.background .shape{
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    border-radius: 50%;
-}
-form{
-    height: 850px;
-    width: 400px;
-    background: transparent;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
-}
-form *{
-    font-family: 'Poppins',sans-serif;
-    color: #130202;
-    letter-spacing: 0.5px;
-    outline: none;
-    border: none;
-}
-form h3{
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 42px;
-    text-align: center;
-}
-
-label{
-    display: block;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-}
-input{
-    display: block;
-    height: 50px;
-    width: 100%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 300;
-}
-::placeholder{
-    color: #110101;
-}
-button{
-    margin-top: 50px;
-    width: 100%;
-    background-color: #ffffff60;
-    color: #080710;
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
+ 
 
     </style>
 </head>
@@ -539,64 +431,99 @@ button{
 
   </aside><!-- End Sidebar-->
   <body> 
-    
-    <div class="background">
+ 
+  <!-- Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="feedbackModalLabel">Update</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="stock1.php" method="post">
+                    <div class="mb-3">
+                    <label for="stock"><b>Stock </b></label>
+    <input type="text"  name="quantity" id="stockPrice" placeholder=""><br>
+    <label for="stock"><b>Connection Price</b> </label>
+    <input type="text" name="conn_amount" id="stockPrice" placeholder="" value="<?php echo $conn_amount ;?>" >
+  <br>  <label for="stock"><b>Cylinder Price </b></label>
+    <input type="text" name="c_price" id="stockPrice" placeholder="" value="<?php echo $c_price;?>" >
 
+                    </div>
+                    
+                </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" name="submit">Save</button>
+            </div>
+            </form>
+          </div>
+       </div>
+    </div>
+
+  <!-- Overlay -->
+  
+  
+  <main id="main" class="main">
+<h1><b>Cylinder</b></h1>
+              <!-- Table with stripped rows -->
+              <table class="table table-light table-striped" style="opacity: 1;">
    
-        <div class="shape"></div>
-        <div class="shape"></div>
-      <?php  
-        $sql = "SELECT * FROM cylinder";
 
+<?php  
+$sql = "SELECT * FROM cylinder";
 $result = mysqli_query($conn, $sql);
 
-
-
-// Close the database connection when done
-//mysqli_close($conn);
 if ($result) {
-  while ($row = mysqli_fetch_array($result)) {
-      $cylinderName = $row['cylinder_name'];
-      $imageFilename = $row['image'];
-      $quantity=$row['quantity'];
-      $c_price=$row['c_price'];
-      $conn_amount=$row['conn_amount'];
+    echo '<table class="table">';
+    echo '<thead>';
+    echo '<tr>';
+    echo '<th>Cylinder Name</th>';
+    echo '<th>Cylinder Image</th>';
+    echo '<th>Existing Stock</th>';
+    echo '<th>Connection Price</th>';
+    echo '<th>Cylinder Price</th>';
+    echo '<th>Last stock Updated</th>';
+    echo '<th>Actions</th>';
+    echo '</tr>';
+    echo '</thead>';
+    echo '<tbody>';
 
-      // Display the cylinder_name
-      //echo "<p>Cylinder Name: $cylinder_name</p>";
+    while ($row = mysqli_fetch_array($result)) {
+        $cylinderName = $row['cylinder_name'];
+        $imageFilename = $row['image'];
+        $quantity = $row['quantity'];
+        $c_price = $row['c_price'];
+        $conn_amount = $row['conn_amount'];
+        $date = $row['date'];
 
-      // Display the associated image from the "uploads" folder
-      
-  }
+        echo '<tr>';
+        echo "<td>$cylinderName</td>";
+        echo '<td><img src="./uploads/' . $imageFilename . '" style="width:50px;height:50px"></td>';
+        echo "<td>$quantity</td>";
+        echo "<td>$conn_amount</td>";
+        echo "<td>$c_price</td>";
+        echo "<td>$date</td>";
+        echo '<td><button class="btn btn-warning" type="button" data-bs-toggle="modal" data-bs-target="#feedbackModal">Update</button></td>';
+
+        echo '</tr>';
+    
+    }
+
+    echo '</tbody>';
+    echo '</table>';
 } else {
-  echo "Error: " . mysqli_error($conn);
+    echo "Error: " . mysqli_error($conn);
 }
 ?>
-    <form method="POST" action="stock1.php">
-      <br><br>
-        <h3>CYLINDER </h3>
+                           
 
-        <label for="cat_img">Cylinder name: <?php echo $cylinderName;?></label>
-
-        <label for="product_image">cylinder image:</label><?php
-        echo '<img src="./uploads/' . $imageFilename . '" style="width:50px;height:50px">';?>
-        
-        
-        <label for="cat_img">Existing Stock</label>
-        <input type="" placeholder="quantity" name="" id="quantity" value="<?php echo $quantity;?>">
-        <label for="cat_img">ADD Stock</label>
-        <input type="number" placeholder="quantity" name="quantity" id="quantity">
-        <label for="cat_img"> connection price</label>
-
-        <input type="number" placeholder="price" name="conn_amount" id="quantity" value="<?php echo $conn_amount;?>">
-
-        <label for="cat_img"> Cylinder price</label>
-        <input type="number" placeholder="" name="c_price" id="quantity" value="<?php echo $c_price;?>">
+<!-- Add Stock Modal -->
 
 
-       <input type="submit"  class="btn btn-success"name="Add" id = "Add" value="Add">
-       
-    </form></div></div></div>
+<!-- Update Modal -->
+
+
 </body>
 
   <!-- ======= Footer ======= -->
@@ -624,6 +551,7 @@ if ($result) {
   <script src="vendor/simple-datatables/simple-datatables.js"></script>
   <script src="vendor/tinymce/tinymce.min.js"></script>
   <script src="vendor/php-email-form/validate.js"></script>
+ 
 
   <!-- Template Main JS File -->
   <script src="JS/admin2.js"></script>

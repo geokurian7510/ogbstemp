@@ -1,3 +1,17 @@
+<?php include('connection.php');
+
+if($_SERVER["REQUEST_METHOD"]=="POST")
+{
+    
+    $id=$_POST['ids'];
+    $sql="DELETE FROM servicearea WHERE serviceid='".$id."'";
+    $result=mysqli_query($conn,$sql);
+}
+else{
+    echo "";
+}
+?>
+
 <?php
 
 include('connection.php');
@@ -17,6 +31,8 @@ else{
 }   
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -417,10 +433,66 @@ else{
 
   </aside><!-- End Sidebar-->
   <main id="main" class="main">
+  <a href="addservicearea1.php" class="btn btn-primary" style="float: right;">ADD SERVICEAREA</a>
+
+<h1 class="text-center">
+<b>   SERVICE AREAS</b>
+      </h1>
+<table class="table table-light table-striped" style="opacity: 1;">
+          <thead>
+         
+              <tr>
+                  <th>Id</th>
+                  <th>pincode</th>
+                  <th>Location</th>
+                  <th>Actions</th>
+                 
+              </tr>
+          </thead>
+          <tbody>
+              <?php
+              $sql = "SELECT * FROM servicearea";
+              $result = mysqli_query($conn,$sql);
+              while ($row = mysqli_fetch_array($result)) {
+              ?>
+                         
+                                      
+                                  <tr><td><?php echo $row['serviceid']?></td>
+                                  <td><?php echo $row['pincode']?></td>
+                                  <td><?php echo $row['location']?></td>
+                                  <td>
+
+                                  
+                                  <form id="deleteForm" action="deleteservicearea.php" method="post">
+                                  <input type="hidden" name="ids" value="<?php echo $row['serviceid'];?>">
+                                  <input type="submit" name="s_id" value="REMOVE" class="btn btn-danger" onclick="confirmDelete(event)">
+</form>
+              </form>
+                                  </td>
+                                  
+              
+                                  
+              </tr>
+                                  
+              <?php } ?>
+          </tbody>
+        </table>
+            
+            <!-- End Table with stripped rows -->
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+        <!-- next table      --->
+
 
   <h1 class="text-center">
-            CHANGE SERVICE AREA
-        </h1><br>
+  <b>CHANGE SERVICE AREA</b>
+        </h1>
               <!-- Table with stripped rows -->
               <table class="table table-light table-striped" style="opacity:1;">
             <thead>
@@ -469,12 +541,13 @@ $result = mysqli_query($conn, $sql);
                 ?>
             </tbody>
         </table>
-    </main>
-    <main id="main" class="main">
+ 
+
+        <!-- next table      --->
         <h1 class="text-center">
-            ASSIGN SERVICE AREA
-        </h1><br>
-        <table class="table table-light table-striped" style="opacity: 0.8;">
+        <b>  ASSIGN SERVICE AREA</b>
+        </h1>
+        <table class="table table-light table-striped" style="opacity: 1;">
             <thead>
                 <tr>
                     <th>F_name</th>
@@ -531,18 +604,19 @@ $result = mysqli_query($conn, $sql);
     </section>
 
   </main><!-- End #main -->
+ 
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+      &copy;  <strong><span></span></strong>
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      <a href="https://bootstrapmade.com/"></a>
     </div>
   </footer><!-- End Footer -->
 

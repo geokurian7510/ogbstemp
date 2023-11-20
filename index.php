@@ -9,6 +9,7 @@
 
 <?php
 include_once 'connection.php';
+session_start();
 error_reporting(E_ALL);
 if($_SERVER["REQUEST_METHOD"]=="POST")
 {
@@ -21,24 +22,25 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $row=mysqli_fetch_array($result);
     if($row["typeofuser"]=="customer")
     {
-        session_start();
+       
         $_SESSION['email']=$email;
 		$sql="select * from customer where email='".$email."'";
 		$result=mysqli_query($conn,$sql);
 		$row=mysqli_fetch_array($result);
 		$_SESSION["customername"]=$row["f_name"];
 		$_SESSION["customerid"]=$row["c_id"];
+		
         header("location:userdashboard.php");
     }
     elseif($row["typeofuser"]=="admin")		
     {
-		session_start();
+	
         $_SESSION['email']=$email;
         header("location:admin2.php");
 		$_SESSION["email"]=$row["email"];
     }
     elseif($row["typeofuser"]=="staff")
-    {   session_start();
+    {  
         $_SESSION['email']=$email;
 		$sql="select * from staff where email='".$email."'";
 		$result=mysqli_query($conn,$sql);
@@ -50,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     }
     else
     {
-        session_start();
+     
         //echo "invalid usernme or password";
 		?>
 		<script>

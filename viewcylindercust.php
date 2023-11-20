@@ -2,24 +2,7 @@
 session_start();
 include("connection.php");
 $c_id =$_SESSION['customerid']; 
-?>
-<?php
-include("connection.php");
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST['ids'];
-    
-    // Update the status to 2
-    $sql = "UPDATE oder SET status = 2 WHERE oder_id = '".$id."'";
-    
-    if ($result = mysqli_query($conn, $sql)) {
-        // Query executed successfully, you can add any further logic here if needed
-    } else {
-        // Error in the query
-    }
-} else {
-    // Not a POST request
-}
+echo $c_id; 
 ?>
 
 <!DOCTYPE html>
@@ -122,15 +105,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
-        <a class="nav-link " href="youroders">
+    
+    <li class="nav-item">
+        <a class="nav-link collapsed " href="youroders.php">
           <i class="bi bi-grid"></i>
           <span>YOUR ORDERS</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item ">
-        <a class="nav-link collapsed" href="viewcylindercust.php">
+        <a class="nav-link " href="viewcylindercust.php">
           <i class="bi bi-person"></i>
           <span>Cylinder Bookings</span>
         </a>
@@ -184,69 +168,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Check if the customer ID is stored in a session variable
 if (isset($_SESSION['customerid'])) {
     $c_id = $_SESSION['customerid'];}
+    
+    $sqlcyl="select * from cylinder ";
+    $rsltcyl=mysqli_query($conn,$sqlcyl);
+    $rowcyl=mysqli_fetch_array($rsltcyl);
 
     // Construct the SQL query to fetch products for the specified customer
-    $sql = "SELECT o.*, p.* FROM oder o
-            JOIN tbl_product p ON o.pro_id = p.pro_id
-            WHERE o.c_id = '".$c_id."'";
+    $sql = "SELECT * FROM gas_cylinder_bookings WHERE user_id = '".$c_id."'";
 
-   // Use a prepared statement
-   $result=mysqli_query($conn,$sql);
-   while($row=mysqli_fetch_array($result)){
-           ?>
+// Use a prepared statement
+$result=mysqli_query($conn,$sql);
+//$row=mysqli_fetch_array($result);
+while($row=mysqli_fetch_array($result)){
+   ?>
+        
 
             <!-- Sales Card -->
             <div class="col-xxl-4 col-md-13">
               <div class="card info-card sales-card">
 
-                <div class="filter"><br><br><br><br><br><br><br>
-                <form method="POST" action="youroders.php">
-                        <input type="hidden" name="ids" value="<?php echo $row['oder_id']; ?>">
-                        <?php
-    if ($row['status'] != 1 && $row['status'] != 2) {
-        echo '<button type="submit" class="btn btn-danger">Cancel Order</button>';
-    }
-?>
-
-    <button type="submit" class="btn btn-primary">Feedback</button> 
-    </form>
-                 
-                </div>
+                
 
                 <div class="card-body">
-                  
                   <h5 class="card-title">Sales <span>| Today</span></h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <img src="./uploads/<?php echo $row['pro_img']; ?>" 
-                    class="w-100" alt="Blue Jeans Jacket" />                    </div>
+                    <img src="./uploads/<?php echo $rowcyl['image']; ?>" 
+     class="w-50" 
+     height="40" 
+     alt="Blue Jeans Jacket" />
+
+                    </div>
                     <div class="ps-3">
-                      <h6><?php echo $row['pro_name'];?></h6>
-              <b>Price:  ₹</b>     <span class="text-success small pt-1 fw-bold"><?php echo $row['amount'];?></span> <span class="text-muted small pt-2 ps-1"></span>
-                      <br>
-                <b>  Quantity: </b> <span class="text-success small pt-1 fw-bold"><?php echo $row['quantity'];?></span> <span class="text-muted small pt-2 ps-1"></span>
-                  <br><b> Date Of Purchase:</b><span class="text-success small pt-1 fw-bold"><?php echo $row['orderdate'];?></span> <span class="text-muted small pt-2 ps-1"></span>
+                      <h6><?php echo $rowcyl['cylinder_name']; ?></h6>
+                    Date:  <span class="text-success small pt-1 fw-bold"><?php echo $row['booking_date']; ?></span> <span class="text-muted small pt-2 ps-1"></span>
+                <br>  Price: ₹<span class="text-success small pt-1 fw-bold">  <?php echo $rowcyl['c_price']; ?></span><br>
+                <?php
+$status = $row['status'];
 
-                  <br>
-                  <span class="badge <?php
-    if ($row['status'] == 1) {
-        echo 'badge-success';
-    } elseif ($row['status'] == 2) {
-        echo 'badge-warning';
-    } else {
-        echo 'badge-danger'; // Assuming red for other statuses, adjust as needed
-    } ?>"
-    style="background-color: <?php
-        echo ($row['status'] == 1) ? 'green' : ($row['status'] == 2 ? 'yellow' : 'red');
-    ?>;
-    color: <?php echo ($row['status'] == 1) ? 'black' : 'black'; ?>">
-    <?php
-        echo ($row['status'] == 1) ? 'DELIVERED' : ($row['status'] == 2 ? 'CANCELLED' : 'SHIPPED');
-    ?>
-</span>
-
-
-
+if ($status == 1) {
+    // Display a green "DELIVERED" badge
+    echo '<span class="badge badge-success" style="background-color: green; color: white;">DELIVERED</span>';
+} else {
+    // Display a red "SHIPPED" badge for any other status
+    echo '<span class="badge badge-warning" style="background-color: red; color: black;">SHIPPED</span>';
+}
+?>
 
                     </div>
                   </div>
