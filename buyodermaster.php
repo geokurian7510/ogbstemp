@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $totamt=$_SESSION['totamount'];
     echo"totamt";
     echo $totamt;
- 
     $date = date("Y/m/d");
     echo $date;
     //$totamt = 0;

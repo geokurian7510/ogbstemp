@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <div class="card-header py-3">
           <form action="buy.php" method="post">
 
-            <h5 class="mb-0"><b>BUY NOW</b></h5></form>
+            <h5 class="mb-0"><b>Book Gas</b></h5></form>
           </div>
           <div class="card-body">
           <?php
@@ -87,8 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $row = mysqli_fetch_array($result);
                             ?>
 
-						
-          
             <!-- Single item 1 -->
             <div class="row">
               <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
@@ -108,11 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <button type="button" class="btn btn-danger btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
                   title="Remove item">
                   <i class="fas fa-trash"></i>
-                </button>
-                <button type="button" class="btn btn-primary btn-sm mb-2" data-mdb-toggle="tooltip"
-                  title="Move to the wish list">
-                  <i class="fas fa-heart"></i>
-                </button>
+              
                 <!-- Data 1 -->
               </div>
               <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">

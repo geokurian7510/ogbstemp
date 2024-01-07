@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href=".php">
+              <a class="dropdown-item d-flex align-items-center" href="staffprofile.php">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -174,20 +174,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </li><!-- End Profile Page Nav -->
 
 
-     
-
-
       <li class="nav-item">
         <a class="nav-link collapsed" href="logout.php">
           <i class="bi bi-box-arrow-in-right"></i>
           <span>Logout</span>
         </a>
       </li><!-- End Login Page Nav -->
-
-     
-
-    
-    
 
     </ul>
 
@@ -230,13 +222,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
   <table class="table table-striped" style="margin-top:50px;margin-left:50px;">
-  <H1><B>Cylinder</B></H1>
+  <H1><B>Cylinder Orders</B></H1>
   <thead>
     <tr>
       <th scope="col">oderid</th>
       <th scope="col">date</th>
 
-      <th scope="col">Customerid</th>
+      <th scope="col">Customer name</th>
       <th scope="col">status</th>
       <th scope="col">Actions</th>
 
@@ -269,7 +261,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <tr>
         <td><?php echo $row['book_id'];?></td>
             <td><?php echo $row['booking_date']; ?></td>
-            <td><?php echo $row['user_id']; ?></td>
+            <td><?php echo $row['f_name'] . ' ' . $row['l_name']; ?></td>
+
+
+
             <td>
         <?php
             if ($row['status'] == 1) {
@@ -327,10 +322,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; <strong><span></span></strong>
-    </div>
+  
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
       <!-- You can delete the links only if you purchased the pro version. -->

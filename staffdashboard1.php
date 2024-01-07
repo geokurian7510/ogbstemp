@@ -97,7 +97,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href=".php">
+              <a class="dropdown-item d-flex align-items-center" href="staffprofile.php">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -458,67 +458,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-  <table class="table table-striped" style="margin-top:50px;margin-left:50px;">
-  <H1><B>Cylinder</B></H1>
-  <thead>
-    <tr>
-      <th scope="col">oderid</th>
-      <th scope="col">date</th>
-
-      <th scope="col">Customerid</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php 
-    // Assuming you have already established a database connection ($conn)
-    if (isset($_SESSION['staffid'])) {
-        $s_id =$_SESSION["staffid"];
-        
-      $sql="select s.*,ssa.*,sa.* from  staff s join staffservicearea ssa on s.s_id=ssa.s_id 
-                                                join servicearea sa on ssa.serviceid=sa.serviceid where  s.s_id='".$s_id."'";
-                                                $result=mysqli_query($conn,$sql);
-                                                $row= mysqli_fetch_array($result);
-
-                                                $pin=$row['pincode'];
-
-        $sql = "SELECT c.*,cu.*,ad.* from gas_cylinder_bookings c
-        join customer  cu on c.user_id=cu.c_id
-        join tbl_address ad on  ad.c_id =cu.c_id where ad.address_postalcode='".$pin."'";
-      
-
-                
-                $result=mysqli_query($conn,$sql);
-  $count=mysqli_num_rows($result);
-
-        while ($row=mysqli_fetch_array($result)) {
-    ?>
-        <tr>
-        <td><?php echo $row['book_id'];?></td>
-            <td><?php echo $row['booking_date']; ?></td>
-            <td><?php echo $row['user_id']; ?></td>
-            <td><?php echo $row['status']; ?></td>
-            <td>
-        
-
-         <!--  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-order-id="<?php echo $row['o_masterid']; ?>">
-  VIEWMORE
-</button>
-           -->
-          <button class="btn btn-success update-status-btn" data-order-id="">Delivered</button>
-          <button class="btn btn-warning" data-order-id="">View Details</button>
-
-        </td>
-        </tr>
-    <?php
   
-        }
-    } else {
-        echo "Customer ID not found in session.";
-    }
-    ?>
-  </tbody>
-</table>
 
 
                 </div>
@@ -540,10 +480,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; <strong><span></span></strong>
-    </div>
+ 
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
       <!-- You can delete the links only if you purchased the pro version. -->

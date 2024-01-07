@@ -48,15 +48,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         $sqlcheck="select * from connection where c_id ='".$custid."'";
         $checkrslt=mysqli_query($conn,$sqlcheck);
         if(mysqli_num_rows($checkrslt)>0)
-        {
-            echo "<script>alert('Already have active connection');</script>";
-        }
-        else{
-    $sql = "insert into connection(ratcard,c_id,aadharno,no_of_cylinder,photo) values('$ratcard','$custid','$aadharno','$no_of_cylinder','$img')";
+        {?>
+            <script>
+                Swal.fire({
+                    icon: 'warning',
+                    text: 'Alread have an Active connection',
+                    didClose: () => {
+                        window.location.replace('../ogbstemp/newgasconn.php');
+                    }
+                });
+            </script>
+        <?php }
+        $sqlration="select * from connection where ratcard ='".$ratcard."'";
+        $rlt=mysqli_query($conn,$sqlration);
+        if($rlt->num_rows > 0){
+            ?>
+            <script>
+                Swal.fire({
+                    icon: 'warning',
+                    text: 'Ration Card already Exist!',
+                    didClose: () => {
+                        window.location.replace('../ogbstemp/newgasconn.php');
+                    }
+                });
+            </script>
+            <?php
+    
+        }else{
+            $sql = "insert into connection(ratcard,c_id,aadharno,no_of_cylinder,photo) values('$ratcard','$custid','$aadharno','$no_of_cylinder','$img')";
     $result=mysqli_query($conn,$sql);
     $connid=mysqli_insert_id($conn);
     $_SESSION['connid']=$connid;
     header("location:connproductminu.php");
+            
         }
     ?>
             <script>
@@ -189,15 +213,15 @@ button{
     <form method="POST" action="newgasconn.php" enctype="multipart/form-data">
         <h3>New Connection</h3>
         <label for="cat_i">Ration Card Number </label>
-        <input type="text" placeholder="" name="ratcard" id="">
+        <input type="text" placeholder="" name="ratcard" id="" pattern="[0-9]{10}" title="Ration Card Number must be 10 Digits" required>
       
         <label for="image">Image </label>
-        <input type="file" placeholder="" name="photo" id="">
+        <input type="file" placeholder="" name="photo" id="" required>
         <label for="aadharno">Aadhar Number</label>
-        <input type="number" placeholder="" name="aadharno" id="">
+        <input type="text" placeholder="" name="aadharno" id="" pattern="[0-9]{12}" title="Aadhar Number must be 12 Digits" required>
 
         <label for="no_of_cylinder">Number of cylinders</label>
-<select name="no_of_cylinder" id="no_of_cylinder">
+<select name="no_of_cylinder" id="no_of_cylinder" required>
     <option value="1">1</option>
     <option value="2">2</option>
 </select>

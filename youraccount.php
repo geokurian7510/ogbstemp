@@ -174,10 +174,10 @@ include("connection.php");
           <div class="ps-1">
             <h5 class="card-title text-left">Your kyc</h5>
             <span class="text-muted medium text-left pt-1 ps-1">Update Kyc:</span>
-            <span class="badge badge-success" style="background-color: green; color: white;">Completed</span>
+          <!----  <span class="badge badge-success" style="background-color: green; color: white;">Completed</span>
                  
                  <span class="badge badge-warning" style="background-color: red; color: black;">Pending</span>
-             
+             ---->
           </div>
         </div>
       </div>

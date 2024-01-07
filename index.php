@@ -18,6 +18,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
     $password=$_POST['password'];
     $sql="select * from login where email='".$email."' and pwd='".$password."'";
     $result=mysqli_query($conn,$sql);
+	if($result->num_rows > 0){
     //echo $result;
     $row=mysqli_fetch_array($result);
     if($row["typeofuser"]=="customer")
@@ -50,6 +51,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST")
         header("location:staffdashboard1.php");
         
     }
+}
     else
     {
      
@@ -154,7 +156,7 @@ else{
 					<div class="form sign-in">
 						<div class="input-group">
 							<i class='bx bx-mail-send'></i>
-							<input type="text" placeholder="Email" name="email">
+							<input type="email" placeholder="Email" name="email">
 						</div>
 						
 						<div class="input-group">

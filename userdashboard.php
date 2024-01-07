@@ -27,11 +27,6 @@ if (isset($_GET['newgasconn'])) {
 
 
 
-
-
-
-
-
 <!DOCTYPE html>
 <html>
    <head>
@@ -99,8 +94,7 @@ if (isset($_GET['newgasconn'])) {
         }</style>
    </head>
    <body>
-      <br>
-      <div class="call_text_main">
+   <div class="call_text_main">
          <div class="container">
             <div class="row">
                <div class="col-md-4">
@@ -108,20 +102,16 @@ if (isset($_GET['newgasconn'])) {
                </div>
                <div class="col-md-4">
                   <div class="header_social_icon">
-                  <ul class="social-icons">
-    <li><a href="#"><i class="fas fa-camera" aria-hidden="true"></i></a></li>
-    <li><a href="#"><i class="fas fa-music" aria-hidden="true"></i></a></li>
-    <li><a href="#"><i class="fas fa-globe" aria-hidden="true"></i></a></li>
-    <li><a href="#"><i class="fas fa-user" aria-hidden="true"></i></a></li>
-
-</ul>
-
-
+                     <ul>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                      </ul>
                   </div>
                </div>
                <div class="col-md-4">
-                  <div class="call_text"><a href="#"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+71) 8522369417</span></a></div>
+                  <div class="call_text"><a href="#"><i class="fa fa-phone" aria-hidden="true"></i><span class="padding_left_15">(+91) 9400430254</span></a></div>
                </div>               
             </div>
          </div>
@@ -204,8 +194,6 @@ if (isset($_GET['newgasconn'])) {
                               <h1 class="banner_taital">Lpg gas<br> for your home</h1>
                               <p class="banner_text">It is a long established fact that a reader will be distracteof a page when looking at its layout. The point of </p>
                               <div class="btn_main">
-                                 <div class="contact_bt"><a href="#">Read More</a></div>
-                                 <div class="contact_bt active"><a href="#">Get A Quote</a></div>
                               </div>
                            </div>
                         </div>
@@ -214,8 +202,7 @@ if (isset($_GET['newgasconn'])) {
                               <h1 class="banner_taital">LPG:<br> The fuel that lights up your life</h1>
                               <p class="banner_text">It is a long established fact that a reader will be distracteof a page when looking at its layout. The point of </p>
                               <div class="btn_main">
-                                 <div class="contact_bt"><a href="#">Read More</a></div>
-                                 <div class="contact_bt active"><a href="#">Get A Quote</a></div>
+                                
                               </div>
                            </div>
                         </div>
@@ -224,8 +211,7 @@ if (isset($_GET['newgasconn'])) {
                               <h1 class="banner_taital">Embrance <br>the future of clean energy with LPG</h1>
                               <p class="banner_text">It is a long established fact that a reader will be distracteof a page when looking at its layout. The point of </p>
                               <div class="btn_main">
-                                 <div class="contact_bt"><a href="#">Read More</a></div>
-                                 <div class="contact_bt active"><a href="#">Get A Quote</a></div>
+                                 
                               </div>
                            </div>
                         </div>
@@ -260,8 +246,7 @@ if (isset($_GET['newgasconn'])) {
          <div class="col-md-7">
             <div class="about_taital_main">
                <h1 class="about_taital">Gas cylinder</h1>
-               <p class="about_text">Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</p>
-               <div class="readmore_bt"><a href="#">Read More</a></div>
+               <p class="about_text">Experience the reliability and safety of our gas cylinders, meticulously crafted to seamlessly store and deliver the fuel that powers your home through the trusted services of OGBS.</p>
             </div>
          </div>
          <div class="col-md-4 padding_right0" style="height: 400px; width: 300px;"> <!-- Adjust height and width as needed -->
@@ -288,19 +273,23 @@ if (isset($_GET['newgasconn'])) {
       <!-- projects section start -->
       <div class="projects_section layout_padding">
          <div class="container">
+         <section id="section2"></section>
+
             <div class="projects_section_2">
+            <h1 class="about_taital">Services</h1><br><br>
+
                <div class="row">
                   <div class="col-md-4">
                      <h1 class="number_text">01</h1>
-                     <h3 class="project_taital">COMMERCIAL PROJECTS</h3>
+                     <h3 class="project_taital">Gas Bookings</h3>
                   </div>
                   <div class="col-md-4">
                      <h1 class="number_text">02</h1>
-                     <h3 class="project_taital">COMMERCIAL PROJECTS</h3>
+                     <h3 class="project_taital">Products Buying</h3>
                   </div>
                   <div class="col-md-4">
                      <h1 class="number_text">03</h1>
-                     <h3 class="project_taital">COMMERCIAL PROJECTS</h3>
+                     <h3 class="project_taital"> Home Delivery</h3>
                   </div>
                </div>
             </div>
@@ -341,7 +330,6 @@ if (isset($_GET['newgasconn'])) {
                   </div>
                </div>
             </div>
-            <div class="read_bt"><a href="#">Read More</a></div>
          </div>
       </div>
       <!-- services section end -->
@@ -463,17 +451,17 @@ if (isset($_GET['newgasconn'])) {
                      <h4 class="footer_taital">Discover</h4>
                      <div class="footer_menu">
                         <ul>
-                           <li><a href="#">Discover</a></li>
-                           <li><a href="index.html">Home</a></li>
-                           <li><a href="#">Categories</a></li>
-                           <li><a href="about.html">About Us</a></li>
-                           <li><a href="contact.html">Contacts</a></li>
+                           <li><a href="#section-one">Feeback</a></li>
+                           <li><a href="userdashboard.php">Home</a></li>
+                           <li><a href="newgasconn.php">New Connection</a></li>
+                           <li><a href="#section-two">Products </a></li>
+                           <li><a href="youraccount.php">Your Account</a></li>
                         </ul>
                      </div>
                   </div>
                   <div class="col-lg-3">
                      <h4 class="footer_taital">Contact Us</h4>
-                     <p class="footer_text">Personal Info Cookie Policy Terms of Us Privacy Policy</p>
+                     <p class="footer_text">Contact support through gmail geokurian7510@gmail.com</p>
                   </div>
                   <div class="col-lg-3">
                      <div class="form-group">

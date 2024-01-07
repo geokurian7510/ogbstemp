@@ -71,18 +71,16 @@
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ml-auto">
                      <li class="nav-item">
-                        <a class="nav-link" href="indexhome.php"><b>HOME</b></a>
+                        <a class="nav-link collapsed" href="indexhome.php"><b>HOME</b></a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="about.html"><B>ABOUT</B></a>
+                        <a class="nav-link" href="#section1"><B>ABOUT</B></a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="services.html"><B>SERVICES</B></a>
+                        <a class="nav-link" href="#section2"><B>SERVICES</B></a>
                      </li>
                      
-                     <li class="nav-item">
-                       <a class="nav-link" href="contact.html"><B>CONTACT US</B></a>
-                     </li>
+                     
                      <li class="nav-item">
                       <a class="nav-link" href="index.php"><B>LOGIN</B></a>
                      </li>
@@ -123,13 +121,10 @@
                                  Explore our articles, guides, and services to discover how LPG can enhance your energy efficiency and reduce your carbon footprint. </p>
                               <div class="btn_main">
                                  <br><br><br><br>
-                                 <div class="contact_bt"><a href="#">Read More</a></div>
-                                 <div class="contact_bt active"><a href="#">Get A Quote</a></div>
                               </div>
                            </div>
                         </div>
                         <div class="carousel-item">
-    <img src="images/about3.jpg" alt="Carousel Image" class="d-block w-100">
     <div class="banner_taital_main">
         <h1 class="banner_taital">DELIVER <br>TO YOUR FINGERTIP</h1>
         <p class="banner_text">Experience the ultimate convenience with our free delivery of LPG gas. 
@@ -138,8 +133,6 @@
             Enjoy the freedom of worry-free cooking with our free LPG gas delivery service
         </p>
         <div class="btn_main">
-            <div class="contact_bt"><alt="Read More">Read More</div>
-            <div class="contact_bt active"><a href="#">Get A Quote</a></div>
         </div>
     </div>
 </div>
@@ -154,8 +147,6 @@
                                  Feel free to reach out to us anytime - we're here to serve you! </p>
                               <div class="btn_main">
                                  <br><br><br><br>
-                                 <div class="contact_bt"><a href="#">Read More</a></div>
-                                 <div class="contact_bt active"><a href="#">Get A Quote</a></div>
                               </div>
                            </div>
                         </div>
@@ -178,12 +169,13 @@
       <!-- about section start -->
       <div class="about_section layout_padding">
          <div class="container-fluid">
+         <section id="section1"></section>
+
             <div class="row">
                <div class="col-md-7">
                   <div class="about_taital_main">
-                     <h1 class="about_taital">About Agency</h1>
-                     <p class="about_text">adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                     <div class="readmore_bt"><a href="#">Read More</a></div>
+                     <h1 class="about_taital">About Website</h1>
+                     <p class="about_text">The About section of OGBS, the gas booking website, provides a comprehensive overview of the platform's mission, commitment to seamless gas services, and its dedication to offering a user-friendly experience, emphasizing reliability, safety, and convenience for customers. It highlights OGBS's vision to revolutionize the gas booking process and enhance customer satisfaction through innovative and efficient solutions in the energy sector</p>
                   </div>
                </div>
                <div class="col-md-5 padding_right0">
@@ -196,20 +188,23 @@
       <!-- projects section start -->
       <div class="projects_section layout_padding">
          <div class="container">
-            
+         <section id="section2"></section>
+
             <div class="projects_section_2">
+            <h1 class="about_taital">Services</h1><br><br>
+
                <div class="row">
                   <div class="col-md-4">
                      <h1 class="number_text">01</h1>
-                     <h3 class="project_taital">COMMERCIAL PROJECTS</h3>
+                     <h3 class="project_taital">Gas Bookings</h3>
                   </div>
                   <div class="col-md-4">
                      <h1 class="number_text">02</h1>
-                     <h3 class="project_taital">COMMERCIAL PROJECTS</h3>
+                     <h3 class="project_taital">Products Buying</h3>
                   </div>
                   <div class="col-md-4">
                      <h1 class="number_text">03</h1>
-                     <h3 class="project_taital">COMMERCIAL PROJECTS</h3>
+                     <h3 class="project_taital"> Home Delivery</h3>
                   </div>
                </div>
             </div>
@@ -250,7 +245,6 @@
                   </div>
                </div>
             </div>
-            <div class="read_bt"><a href="#">Read More</a></div>
          </div>
       </div>
       <!-- services section end -->
@@ -259,7 +253,7 @@
          <div class="container">
             <div class="row">
                <div class="col-md-12">
-                  <h1 class="blog_taital">Our Blog</h1>
+                  <h1 class="blog_taital">Our Blog</h1><br>
                </div>
             </div>
             <div class="choose_section_2">
@@ -267,23 +261,20 @@
                   <div class="col-sm-4">
                      <div class="blog_img"><img src="images/gas1.jpeg"></div>
                      <h4 class="date_text">01 May</h4>
-                     <h4 class="safety_text">How does WordPress blog work</h4>
-                     <p class="ipsum_text">vLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
-                     <div class="read_bt1"><a href="#">Read More</a></div>
+                     <h4 class="safety_text"></h4>
+                     <p class="ipsum_text">Once you've placed your gas order through our user-friendly website, our advanced order processing system takes over. Your request is swiftly transmitted to our distribution center, where our team begins coordinating the logistics for your delivery.</p>
                   </div>
                   <div class="col-sm-4">
                      <div class="blog_img"><img src="images/gas3.jpeg"></div>
                      <h4 class="date_text">3 Aug</h4>
-                     <h4 class="safety_text">How does WordPress blog work</h4>
-                     <p class="ipsum_text">vLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
-                     <div class="read_bt1"><a href="#">Read More</a></div>
+                     <h4 class="safety_text"></h4>
+                     <p class="ipsum_text">Efficiency is key in delivering your gas on time. Our state-of-the-art route optimization algorithms ensure that our delivery vehicles take the most direct and time-efficient routes to reach your location. This not only saves time but also contributes to reducing our carbon footprint.</p>
                   </div>
                   <div class="col-sm-4">
                      <div class="blog_img"><img src="images/gas2.jpeg"></div>
                      <h4 class="date_text">01 May</h4>
-                     <h4 class="safety_text">How does WordPress blog work</h4>
-                     <p class="ipsum_text">vLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min</p>
-                     <div class="read_bt1"><a href="#">Read More</a></div>
+                     <h4 class="safety_text"></h4>
+                     <p class="ipsum_text">Safety is our top priority. Our delivery personnel undergo rigorous training to handle gas cylinders with the utmost care. Additionally, our vehicles are equipped with safety features to ensure that your gas is transported securely.</p>
                   </div>
                </div>
             </div>
@@ -296,23 +287,34 @@
             <div class="row">
                <div class="col-md-12">
                   <h1 class="client_taital">CUSTOMER REVIEWS</h1>
-                  <p class="dummy_text">incididunt ut labore et dolore magna aliqua. Ut enim adincididunt ut labore et dolore magna aliqua. Ut enim ad  </p>
+                  <p class="dummy_text">A customer review of OGBS, a gas booking website, reflects the user's satisfaction or dissatisfaction with the platform's efficiency, user interface, and overall experience in facilitating gas bookings.
+
+
+
+
+
+
+</p>
                </div>
             </div>
             <div class="client_section_2">
                <div class="row">
                    <div class="col-md-6">
                       <div class="client_taital_box">                                 
-                        <p class="client_text">onsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolor</p>
+                        <p class="client_text">⭐️⭐️⭐️⭐️⭐️<br>
+
+I have been using this gas booking website for several months now, and I am extremely satisfied with the service. The user interface is clean, intuitive, and easy to navigate, making the entire booking process a breeze.</p>
                      </div>
-                     <h3 class="moark_text">Brobo Lo</h3>
+                     <h3 class="moark_text">Basil Jose</h3>
                      <h4 class="customer_text">Customer</h4>
                   </div>
                   <div class="col-md-6">
                      <div class="client_taital_box">                                 
-                        <p class="client_text">onsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolor</p>
+                     <p class="client_text">⭐️⭐️⭐️⭐️<br>
+
+                     The delivery personnel are always punctual and professional. They handle the gas cylinders with care, and I've never had any issues with the quality of the gas supplied..</p>
                      </div>
-                     <h3 class="moark_text">Jesliyo</h3>
+                     <h3 class="moark_text">Anandan</h3>
                      <h4 class="customer_text">Customer</h4>
                   </div>
                 </div>
@@ -321,28 +323,7 @@
       </div>
       <!-- client section end -->
       <!-- contact section start -->
-      <div class="contact_section layout_padding">
-         <div class="container">
-            <div class="row">
-               <div class="col-sm-12">
-                  <h1 class="contact_taital">FEEDBACK</h1>
-               </div>
-            </div>
-         </div>
-         <div class="container">
-            <div class="contact_section_2">
-               <div class="row">
-                  <div class="col-md-12">
-                     <div class="mail_section_1">
-                        <input type="text" class="mail_text" placeholder="Name" name="Name">
-                        <textarea class="massage-bt" placeholder="Massage" rows="5" id="comment" name="Massage"></textarea>
-                        <div class="send_bt"><a href="#">Send</a></div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
+    
       <!-- contact section end -->
       <!-- footer section start -->
       <div class="footer_section layout_padding">
@@ -350,31 +331,23 @@
             <div class="footer_section_2">
                <div class="row">
                   <div class="col-lg-3">
-                     <div class="footeer_logo"><img src="images/ogbslogo.png"></div>
+                     <div class="footeer_logo"><img src="images/ogbslogonew.png"></div>
                   </div>
                   <div class="col-lg-3">
                      <h4 class="footer_taital">Discover</h4>
                      <div class="footer_menu">
                         <ul>
-                           <li><a href="#">Discover</a></li>
-                           <li><a href="home.html">Home</a></li>
-                           <li><a href="#">Categories</a></li>
-                           <li><a href="about.html">About Us</a></li>
-                           <li><a href="contact.html">Contacts</a></li>
+                           <li><a href="indexhome.php">Home</a></li>
+                           <li><a href="#section1">About Us</a></li>
+                           <li><a href="#section2">Our Services</a></li>
                         </ul>
                      </div>
                   </div>
                   <div class="col-lg-3">
                      <h4 class="footer_taital">Contact Us</h4>
-                     <p class="footer_text">Personal Info Cookie Policy Terms of Us Privacy Policy</p>
+                     <p class="footer_text">Contact support through gmail geokurian7510@gmail.com</p>
                   </div>
-                  <div class="col-lg-3">
-                     <h4 class="footer_taital">Newsletter</h4>
-                     <div class="form-group">
-                        <textarea class="update_mail" placeholder="Email" rows="5" id="comment" name="Email"></textarea>
-                        <div class="subscribe_bt"><a href="#">Subscribe</a></div>
-                     </div>
-                  </div>
+                 
                </div>
             </div>
          </div>

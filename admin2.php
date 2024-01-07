@@ -195,7 +195,7 @@ include("connection.php");
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-cart3"></i><span>Product</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-cart3"></i><span>Product&Bookings</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -310,33 +310,14 @@ include("connection.php");
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
+                  <h5 class="card-title"> Product Sales <span></span></h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                    <?php
-      // Include the connection.php file to establish the database connection
-      include('connection.php');
-
-      // SQL query to count the number of rows in the "customer" table
-      $sql = "SELECT COUNT(*) as total_oder FROM oder ";
-
-      // Execute the query
-      $result = mysqli_query($conn, $sql);
-
-      if ($result) {
-        // Fetch the result row
-        $row = $result->fetch_assoc();
-        $totaloder = $row['total_oder'];
-        echo '<h6>' . $totaloder . '</h6>';
-        // Close the result set
-        $result->close();
-      } else {
-        echo "Error: " . $mysqli->error;
-      }
-    ?>
+                    <a href="report2.php" class="btn btn-primary">View Report</a>
+                
     
 
                       
@@ -366,7 +347,7 @@ include("connection.php");
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Feedbacks <span>| This Month</span></h5>
+                  <h5 class="card-title">Feedbacks <span> </span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -424,7 +405,7 @@ include("connection.php");
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
+                  <h5 class="card-title">Customers <span></span></h5>
                   <div class="d-flex align-items-center">
   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
     <i class="bi bi-people"></i>
@@ -480,7 +461,7 @@ include("connection.php");
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Staff <span>| Today</span></h5>
+                  <h5 class="card-title">Staff <span></span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -535,7 +516,7 @@ include("connection.php");
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">New Connections <span>| Today</span></h5>
+                  <h5 class="card-title">New Connections <span></span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -591,11 +572,11 @@ include("connection.php");
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Payments <span>| Today</span></h5>
+                  <h5 class="card-title">Cylinder Bookings <span></span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-credit-card-2-back"></i>
+                    <i class="bi bi-basket2-fill"></i>
                     </div>
                     <div class="ps-3">
                     <?php
@@ -603,7 +584,7 @@ include("connection.php");
       include('connection.php');
 
       // SQL query to count the number of rows in the "customer" table
-      $sql = "SELECT COUNT(*) as total_staff FROM staff where status=1";
+      $sql = "SELECT COUNT(*) as total_gas_cylinder_bookings FROM gas_cylinder_bookings";
 
       // Execute the query
       $result = mysqli_query($conn, $sql);
@@ -611,8 +592,8 @@ include("connection.php");
       if ($result) {
         // Fetch the result row
         $row = $result->fetch_assoc();
-        $totalstaff = $row['total_staff'];
-        echo '<h6>' . $totalstaff . '</h6>';
+        $total_gas_cylinder_bookings = $row['total_gas_cylinder_bookings'];
+        echo '<h6>' . $total_gas_cylinder_bookings . '</h6>';
         // Close the result set
         $result->close();
       } else {
@@ -648,68 +629,65 @@ include("connection.php");
                   <h5 class="card-title">Reports <span>/Today</span></h5>
 
                   <!-- Line Chart -->
-                  <div id="reportsChart"></div>
+                  <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Bar CHart</h5>
 
-                  <script>
-                    document.addEventListener("DOMContentLoaded", () => {
-                      new ApexCharts(document.querySelector("#reportsChart"), {
-                        series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
-                        chart: {
-                          height: 350,
-                          type: 'area',
-                          toolbar: {
-                            show: false
-                          },
-                        },
-                        markers: {
-                          size: 4
-                        },
-                        colors: ['#4154f1', '#2eca6a', '#ff771d'],
-                        fill: {
-                          type: "gradient",
-                          gradient: {
-                            shadeIntensity: 1,
-                            opacityFrom: 0.3,
-                            opacityTo: 0.4,
-                            stops: [0, 90, 100]
-                          }
-                        },
-                        dataLabels: {
-                          enabled: false
-                        },
-                        stroke: {
-                          curve: 'smooth',
-                          width: 2
-                        },
-                        xaxis: {
-                          type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-                        },
-                        tooltip: {
-                          x: {
-                            format: 'dd/MM/yy HH:mm'
-                          },
+              <!-- Bar Chart -->
+              <canvas id="barChart" style="max-height: 400px;"></canvas>
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  new Chart(document.querySelector('#barChart'), {
+                    type: 'bar',
+                    data: {
+                      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','august', 'september', 'october ', 'November', 'december'],
+                      datasets: [{
+                        label: 'Bar Chart',
+                        data: [65, 59, 80, 81, 56, 55, 40,55,33,32,17,66],
+                        backgroundColor: [
+                          'rgba(255, 99, 132, 0.2)',
+                          'rgba(255, 159, 64, 0.2)',
+                          'rgba(255, 205, 86, 0.2)',
+                          'rgba(75, 192, 192, 0.2)',
+                          'rgba(54, 162, 235, 0.2)',
+                          'rgba(54, 162, 235, 0.2)',
+
+                          'rgba(54, 162, 235, 0.2)',
+
+                          'rgba(54, 162, 235, 0.2)',
+
+                          'rgba(153, 102, 255, 0.2)',
+                          'rgba(201, 203, 207, 0.2)'
+                          
+                        ],
+                        borderColor: [
+                          'rgb(255, 99, 132)',
+                          'rgb(255, 159, 64)',
+                          'rgb(255, 205, 86)',
+                          'rgb(75, 192, 192)',
+                          'rgb(54, 162, 235)',
+                          'rgb(153, 102, 255)',
+                          'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
+                      }]
+                    },
+                    options: {
+                      scales: {
+                        y: {
+                          beginAtZero: true
                         }
-                      }).render();
-                    });
-                  </script>
-                  <!-- End Line Chart -->
+                      }
+                    }
+                  });
+                });
+              </script>
+              <!-- End Bar CHart -->
 
-                </div>
-
-              </div>
-            </div><!-- End Reports -->
-
-
+            </div>
+          </div>
+        </div>
           
 
           <!-- News & Updates Traffic -->
@@ -723,18 +701,7 @@ include("connection.php");
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; <strong><span></span></strong>
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-    <a href="https://bootstrapmade.com/"></a>
-    </div>
-  </footer><!-- End Footer -->
+<!-- End Footer -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
